@@ -1,0 +1,39 @@
+.headerBase {
+  text-transform: lowercase;
+}
+
+h1 {
+  --bg-size: 400%;
+  text-align: center;
+  font-size: var(--hero-text);
+  background: var(--gradient-header-bg) 0 0 / var(--bg-size) 100%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-family: var(--ff-secondary);
+  line-height: 1em;
+  /* small line height introduces clipping to hanging characters. This fixes it. */
+  padding-block-end: 0.1em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes move-header-bg {
+    to {
+      background-position: var(--bg-size) 0;
+    }
+  }
+  h1 {
+    animation: move-header-bg 30s linear infinite;
+  }
+}
+
+@media (min-width: 56.25rem) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-align: left;
+  }
+}

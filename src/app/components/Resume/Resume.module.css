@@ -1,0 +1,28 @@
+.resumeWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.companyHeading {
+  text-align: left;
+  margin-block-end: 0;
+}
+
+.resumeExperienceList {
+  padding-inline-start: 1rem;
+}
+
+@media (min-width: 56.25rem) {
+  .resumeWrapper {
+    flex-direction: row;
+    margin-block-start: 1rem;
+  }
+
+  .resumeJobOverview {
+    flex: 1 0 18em;
+  }
+
+  .resumeExperienceList {
+    padding-inline-start: 3rem;
+  }
+}

@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  gap: var(--space-2xs-xs);
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  margin-block-start: var(--space-2xs-xs);
+  justify-content: center;
+}
+
+.pill {
+  list-style: none;
+  background: hsla(0, 0%, 0%, 0.2);
+  padding-block: var(--space-3xs-2xs);
+  padding-inline: var(--space-s-m);
+  border-radius: 10rem;
+  font-size: var(--space-xs-s);
+  font-weight: var(--fw-bold);
+  border: 1px solid var(--clr-secondary-500);
+}
+
+@media (min-width: 56.25rem) {
+  .wrapper {
+    justify-content: start;
+  }
+}

@@ -1,0 +1,18 @@
+.footerWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  inline-size: clamp(343px, 90%, 1080px);
+  margin-inline: auto;
+  margin-block-end: var(--space-xs-s);
+}
+
+.links {
+  display: flex;
+  gap: var(--space-xs-s);
+}
+
+.links > a {
+  color: var(--clr-primary-100);
+  font-size: var(--space-s);
+}

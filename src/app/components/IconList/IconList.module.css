@@ -1,0 +1,34 @@
+.wrapper {
+  list-style: none;
+  gap: var(--space-xs-s);
+  margin-block: 0;
+  align-items: center;
+  padding: 0;
+  display: none;
+}
+
+.largeWrapper {
+  gap: var(--space-xs-s);
+  justify-content: center;
+}
+
+.icon {
+  height: var(--space-s-m);
+  border-radius: 2px;
+}
+
+.test:focus-within {
+  outline: 3px solid var(--clr-tertiary-800);
+  outline-offset: 5px;
+}
+
+.icon.large {
+  height: var(--space-2xl-3xl);
+  border-radius: 4px;
+}
+
+@media (min-width: 900px) {
+  .wrapper {
+    display: flex;
+  }
+}

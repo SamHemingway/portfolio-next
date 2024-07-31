@@ -1,0 +1,37 @@
+.wrapper {
+  --nav-border: 1px solid hsla(255, 100%, 100%, 0.1);
+  background: linear-gradient(
+    hsla(216, 33%, 16%, 0.8),
+    hsla(216, 75%, 8%, 0.8)
+  );
+  border-block-end: var(--nav-border);
+  position: fixed;
+  top: 0;
+  inline-size: 100%;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  /* Let's stay on top of the headshot image & overlay */
+  z-index: 3;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  inline-size: clamp(343px, 90%, 1080px);
+  margin-inline: auto;
+  font-size: var(--space-s-m);
+  font-family: var(--ff-secondary);
+  padding-block: 5px;
+}
+
+.leftSide {
+  display: flex;
+  gap: var(--space-xs-s);
+}
+
+@media (min-width: 56.25rem) {
+  nav {
+    padding-block: 0;
+  }
+}

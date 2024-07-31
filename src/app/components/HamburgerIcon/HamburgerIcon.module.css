@@ -1,0 +1,43 @@
+.icon {
+  background: none;
+  border: none;
+  padding: 0;
+  color: white;
+  display: grid;
+  place-content: center;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  outline-offset: 4px;
+}
+
+@media (min-width: 900px) {
+  .icon {
+    display: none;
+  }
+}
+
+@media (pointer: coarse) {
+  .icon {
+    position: relative;
+  }
+
+  .icon::after {
+    --tap-increment: -8px;
+    content: "";
+    position: absolute;
+    top: var(--tap-increment);
+    left: var(--tap-increment);
+    right: var(--tap-increment);
+    bottom: var(--tap-increment);
+  }
+}
+
+.svg {
+  height: 2.15em;
+  width: 2.15em;
+}
+
+.line {
+  stroke: var(--clr-primary-200);
+  stroke-width: 0.5em;
+}

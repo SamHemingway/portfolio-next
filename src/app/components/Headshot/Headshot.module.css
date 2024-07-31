@@ -1,0 +1,57 @@
+@keyframes phased {
+  0% {
+    filter: drop-shadow(var(--phased-effect-transparent))
+      drop-shadow(var(--phased-effect-transparent))
+      drop-shadow(var(--phased-effect-transparent));
+  }
+  33% {
+    filter: drop-shadow(var(--phased-effect-1))
+      drop-shadow(var(--phased-effect-transparent))
+      drop-shadow(var(--phased-effect-transparent));
+  }
+  66% {
+    filter: drop-shadow(var(--phased-effect-1))
+      drop-shadow(var(--phased-effect-2))
+      drop-shadow(var(--phased-effect-transparent));
+  }
+  100% {
+    filter: drop-shadow(var(--phased-effect-1))
+      drop-shadow(var(--phased-effect-2)) drop-shadow(var(--phased-effect-3));
+  }
+}
+
+.headshot {
+  width: clamp(15.625rem, 40vw, 28.125rem);
+  padding-block-end: calc(var(--phase-gap) * 5);
+  z-index: 2;
+  position: relative;
+  aspect-ratio: 1/1;
+}
+
+.headshot > * {
+  filter: drop-shadow(var(--phased-effect-1))
+    drop-shadow(var(--phased-effect-2)) drop-shadow(var(--phased-effect-3));
+}
+
+@media (min-width: 768px) {
+  .headshot {
+    float: right;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .headshot > * {
+    will-change: filter;
+    filter: none;
+    animation: phased 1s forwards 1.5s;
+  }
+}
+
+@supports (-webkit-appearance: none) {
+  .headshot > * {
+    will-change: filter;
+    filter: drop-shadow(var(--phased-effect-1))
+      drop-shadow(var(--phased-effect-2)) drop-shadow(var(--phased-effect-3));
+    animation: none;
+  }
+}

@@ -1,0 +1,110 @@
+.deck {
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(17rem, 100%), 1fr));
+  gap: var(--space-s-m);
+}
+
+.deckDouble {
+  grid-template-columns: repeat(auto-fill, minmax(min(25rem, 100%), 1fr));
+}
+
+.card {
+  list-style: none;
+}
+
+.card a:visited {
+  color: var(--clr-tertiary-800);
+}
+
+.card a {
+  color: var(--clr-tertiary-500);
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+.cardTitleBG {
+  background-color: var(--clr-tertiary-500);
+  background-size: 4rem;
+  border-radius: var(--rad-xs);
+}
+
+.cardTitle {
+  width: 100%;
+  text-align: left;
+  color: var(--clr-primary-700);
+  border: none;
+  text-transform: uppercase;
+  font-weight: var(--fw-bold);
+  padding-block: var(--space-xs);
+  padding-inline: var(--space-s);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: var(--rad-xs);
+  line-height: 0;
+  background: transparent;
+}
+
+.cardTitleBG:has(.cardTitle[data-headlessui-state="open"]) {
+  border-radius: var(--rad-xs) var(--rad-xs) 0 0;
+}
+
+.cardBody {
+  color: var(--clr-secondary-100);
+  background: var(--clr-primary-700);
+  padding-block-start: var(--space-xs);
+  padding-block-end: var(--space-m);
+  padding-inline: var(--space-s);
+  border-radius: 0 0 var(--rad-xs) var(--rad-xs);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  max-inline-size: 60ch;
+}
+
+.cardBody li {
+  margin-block-end: var(--space-s-m);
+}
+
+.icon {
+  stroke-width: 0.6em;
+  stroke: var(--clr-primary-700);
+  height: 2.5em;
+  position: relative;
+}
+
+.iconCircle {
+  fill: transparent;
+}
+
+.iconLine {
+  stroke-linecap: round;
+}
+
+.curious {
+  background-image: url("../../assets/icons/curious-pattern.svg");
+}
+
+.autonomous {
+  background-image: url("../../assets/icons/autonomous-pattern.svg");
+}
+.coachable {
+  background-image: url("../../assets/icons/coachable-pattern.svg");
+}
+.meticulous {
+  background-image: url("../../assets/icons/meticulous-pattern.svg");
+}
+.empathetic {
+  background-image: url("../../assets/icons/empathetic-pattern.svg");
+}
+.forward {
+  background-image: url("../../assets/icons/forward-pattern.svg");
+}

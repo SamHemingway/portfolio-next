@@ -1,0 +1,45 @@
+.navItem {
+  list-style: none;
+  padding-block: 12px;
+  margin: 0;
+  padding-inline: var(--space-s);
+  border-inline-start: var(--nav-border);
+}
+
+.navItem:hover,
+.navItem:focus {
+  background: hsla(0, 0%, 100%, 0.05);
+}
+
+.navLink {
+  text-decoration: none;
+  position: relative;
+  color: white;
+}
+
+.navLink::after {
+  --tap-increment: -16px;
+  content: "";
+  position: absolute;
+  top: var(--tap-increment);
+  left: var(--tap-increment);
+  right: var(--tap-increment);
+  bottom: var(--tap-increment);
+}
+
+.navLink:visited {
+  color: white;
+}
+
+.navBar {
+  display: none;
+  margin-block: 0;
+  margin-inline-start: auto;
+}
+
+@media (min-width: 900px) {
+  .navBar {
+    display: flex;
+    align-items: baseline;
+  }
+}

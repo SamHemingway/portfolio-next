@@ -1,0 +1,97 @@
+.deck {
+  display: grid;
+  grid-template-areas: "mainCard" "." ".";
+  padding: 0;
+  list-style: none;
+  gap: var(--space-s-m);
+  align-items: center;
+}
+
+@media (min-width: 40rem) {
+  .deck {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "mainCard mainCard"
+      ". .";
+  }
+
+  .importantCard {
+    max-inline-size: 60ch;
+    justify-self: center;
+  }
+
+  .cardHeader {
+    text-align: center;
+  }
+}
+
+@media (min-width: 60rem) {
+  .deck {
+    grid-template-columns: 1fr 1.15fr 1fr;
+    grid-template-areas: ". mainCard .";
+    margin-block: calc(-1 * var(--space-xl));
+  }
+}
+
+.cardWrapper {
+  background: var(--clr-secondary-500);
+  border-radius: var(--rad-xs);
+  overflow: hidden;
+}
+
+.cardWrapper > * {
+  grid-column: 2;
+  text-decoration: inherit;
+  color: inherit;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: var(--space-s) 1fr var(--space-s);
+}
+
+.cardWrapper:focus-within {
+  outline: 5px solid var(--clr-tertiary-800);
+  outline-offset: 3px;
+}
+
+.cardWrapper:active {
+  outline: none;
+  outline-offset: 0px;
+}
+
+.card > * {
+  grid-column: 2;
+}
+
+.card:hover .cardHeader {
+  text-decoration: underline;
+}
+
+.importantCard {
+  background: var(--gradient-strong);
+  grid-area: mainCard;
+}
+
+.cardImage {
+  grid-column: 1 / -1;
+}
+
+.cardImage > * {
+  object-fit: cover;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  padding-block: var(--space-xs);
+}
+
+.cardContent > p {
+  text-decoration: none;
+}
+
+.disabled {
+  cursor: not-allowed;
+}

@@ -1,0 +1,18 @@
+.overlay {
+  background: hsla(0, 0%, 0%, 0.8);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position: fixed;
+  inset: 0;
+  overflow-y: scroll;
+  z-index: 2;
+}
+
+.closeNav {
+  background: none;
+  border: none;
+  position: fixed;
+  height: 2.25em;
+  width: 100%;
+  top: 0.5em;
+}

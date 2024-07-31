@@ -1,0 +1,48 @@
+.navList {
+  text-decoration: none;
+  list-style: none;
+  padding-inline: 0;
+  text-align: center;
+  font-family: var(--ff-secondary);
+  font-size: var(--space-l);
+  font-weight: var(--fw-bold);
+  color: var(--clr-secondary-100);
+}
+
+.close {
+  background: none;
+  border: none;
+}
+
+.navItem {
+  text-decoration: none;
+  color: var(--clr-secondary-100);
+}
+
+@media (pointer: coarse) {
+  .navItem {
+    position: relative;
+  }
+
+  .navItem::after {
+    --tap-increment: -8px;
+    content: "";
+    position: absolute;
+    top: var(--tap-increment);
+    left: var(--tap-increment);
+    right: var(--tap-increment);
+    bottom: var(--tap-increment);
+  }
+}
+
+.content {
+  position: fixed;
+  top: 1%;
+  left: 50%;
+  transform: translate(-50%, 20%);
+  inline-size: 100%;
+  max-block-size: 80vh;
+  padding-inline: 20vw;
+  z-index: 3;
+  overflow-y: scroll;
+}

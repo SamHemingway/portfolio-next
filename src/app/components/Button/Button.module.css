@@ -1,0 +1,63 @@
+.button {
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: var(--ff-secondary);
+  font-weight: var(--fw-bold);
+  padding-inline: var(--space-s);
+  inline-size: fit-content;
+  text-align: center;
+  transition: transform 0.1s, box-shadow 0.1s;
+  border: none;
+}
+
+.button a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.large {
+  font-size: 150%;
+}
+
+.cta {
+  background: var(--gradient-strong);
+  border: 2px solid var(--clr-primary-700);
+  color: var(--clr-primary-700);
+  border-radius: var(--rad-sm);
+}
+
+.fill {
+  background: var(--clr-primary-700);
+  color: var(--clr-primary-100);
+  border-radius: var(--rad-xs);
+}
+
+.letsTalk {
+  display: none;
+}
+
+.cta:hover,
+.cta:focus {
+  transform: scale(1.05);
+  box-shadow: var(--glow-cta);
+}
+
+.stretch {
+  inline-size: 100%;
+}
+
+@media (min-width: 56.25rem) {
+  .letsTalk {
+    display: block;
+    background: var(--gradient-strong);
+    border: none;
+    color: var(--clr-primary-700);
+    transition: transform 0.1s, filter 0.1s;
+    padding-block: 12px;
+  }
+
+  .letsTalk:hover,
+  .letsTalk:focus {
+    filter: drop-shadow(var(--glow-cta));
+  }
+}
