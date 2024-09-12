@@ -1,0 +1,142 @@
+:root {
+  /* ---------------------------------------------------------------------- */
+  /*                                 Colours                                */
+  /* ---------------------------------------------------------------------- */
+
+  /* ----------------------------- Raw values ----------------------------- */
+
+  --clr-primary-100: hsla(192, 90%, 95%, 1);
+  --clr-primary-200: hsla(220, 6%, 82%, 1);
+  --clr-primary-300: hsla(192, 90%, 77%, 1);
+  --clr-primary-500: hsla(192, 37%, 48%, 1);
+  --clr-primary-700: hsla(216, 33%, 16%, 1);
+  --clr-primary-900: hsla(216, 75%, 8%, 1);
+
+  --clr-secondary-100: hsla(44, 100%, 95%, 1);
+  --clr-secondary-300: hsla(43, 100%, 85%, 1);
+  --clr-secondary-500: hsla(44, 32%, 71%, 1);
+
+  --clr-tertiary-500: hsla(33, 99%, 70%, 1);
+  --clr-tertiary-600: hsla(34, 71%, 61%, 1);
+  --clr-tertiary-800: hsla(358, 99%, 71%, 1);
+
+  /* ------------------------------ Gradients ----------------------------- */
+
+  --gradient-header-bg: linear-gradient(
+    90deg,
+    var(--clr-tertiary-800),
+    var(--clr-tertiary-500),
+    var(--clr-tertiary-800)
+  );
+
+  --gradient-strong: linear-gradient(
+    00deg,
+    var(--clr-tertiary-800),
+    var(--clr-tertiary-500)
+  );
+  --gradient-highlight: linear-gradient(
+    -90deg,
+    var(--clr-secondary-100),
+    var(--clr-secondary-300)
+  );
+  --gradient-cta: linear-gradient(
+    0deg,
+    var(--clr-primary-500),
+    var(--clr-primary-300)
+  );
+
+  /* --------------------------- Defined values --------------------------- */
+
+  --dark-bg: var(--clr-primary-900);
+  --dark-content: var(--clr-secondary-300);
+  --light-bg: var(--gradient-highlight);
+  --light-content: var(--clr-primary-700);
+
+  /* ---------------------------------------------------------------------- */
+  /*                               Dimensions                               */
+  /* ---------------------------------------------------------------------- */
+
+  /* ------------------------------- Spacing ------------------------------ */
+
+  /* @link https://utopia.fyi/space/calculator?c=375,16,1.2,1280,16,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+  --space-3xs: clamp(0.25rem, calc(0.25rem + 0vw), 0.25rem);
+  --space-2xs: clamp(0.5rem, calc(0.5rem + 0vw), 0.5rem);
+  --space-xs: clamp(0.75rem, calc(0.75rem + 0vw), 0.75rem);
+  --space-s: clamp(1rem, calc(1rem + 0vw), 1rem);
+  --space-m: clamp(1.5rem, calc(1.5rem + 0vw), 1.5rem);
+  --space-l: clamp(2rem, calc(2rem + 0vw), 2rem);
+  --space-xl: clamp(3rem, calc(3rem + 0vw), 3rem);
+  --space-2xl: clamp(4rem, calc(4rem + 0vw), 4rem);
+  --space-3xl: clamp(6rem, calc(6rem + 0vw), 6rem);
+
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.25rem, calc(0.15rem + 0.44vw), 0.5rem);
+  --space-2xs-xs: clamp(0.5rem, calc(0.4rem + 0.44vw), 0.75rem);
+  --space-xs-s: clamp(0.75rem, calc(0.65rem + 0.44vw), 1rem);
+  --space-s-m: clamp(1rem, calc(0.79rem + 0.88vw), 1.5rem);
+  --space-m-l: clamp(1.5rem, calc(1.29rem + 0.88vw), 2rem);
+  --space-l-xl: clamp(2rem, calc(1.59rem + 1.77vw), 3rem);
+  --space-xl-2xl: clamp(3rem, calc(2.59rem + 1.77vw), 4rem);
+  --space-2xl-3xl: clamp(4rem, calc(3.17rem + 3.54vw), 6rem);
+
+  /* Custom pairs */
+  --space-s-l: clamp(1rem, calc(0.59rem + 1.77vw), 2rem);
+
+  /* ---------------------------------------------------------------------- */
+  /*                                  Fonts                                 */
+  /* ---------------------------------------------------------------------- */
+
+  /* ------------------------------ Families ------------------------------ */
+
+  --ff-primary: var(--font-rubik), sans-serif;
+  --ff-secondary: var(--font-quicksand), sans-serif;
+
+  /* --------------------------- Dynamic sizing --------------------------- */
+
+  --lead-text: var(--space-s-m);
+  --hero-text: var(--space-xl-2xl);
+
+  /* ---------------------------- Line heights ---------------------------- */
+
+  --lh-sm: 85%;
+  --lh-md: 150%;
+
+  /* ------------------------------- Weights ------------------------------ */
+
+  --fw-reg: 400;
+  --fw-bold: 700;
+
+  /* ---------------------------------------------------------------------- */
+  /*                               Decorative                               */
+  /* ---------------------------------------------------------------------- */
+
+  /* -------------------------------- Radii ------------------------------- */
+
+  --rad-xs: var(--space-2xs-xs);
+  --rad-sm: var(--space-s-m);
+  --rad-md: var(--space-m-l);
+
+  /* ------------------------------- Shadows ------------------------------ */
+
+  --box-shadow-dark-bg: 0px 0px 18px hsla(360, 0, 0, 0.2);
+  --box-shadow-light-bg: 0px 0px 15px hsla(360, 0, 0, 0.15);
+  --glow-cta: 0px 0px 10px var(--clr-tertiary-800);
+
+  --phase-gap: var(--space-3xs-2xs);
+
+  --phased-effect-1: var(--phase-gap) var(--phase-gap) 0px
+    var(--clr-tertiary-800);
+  --phased-effect-2: var(--phase-gap) var(--phase-gap) 0px
+    var(--clr-tertiary-500);
+  --phased-effect-3: var(--phase-gap) var(--phase-gap) 0px
+    var(--clr-secondary-300);
+  --phased-effect-transparent: var(--phase-gap) var(--phase-gap) 0px
+    var(--clr-secondary-300);
+
+  --phased-effect-vert-1: 0px var(--phase-gap) 0px var(--clr-tertiary-800);
+  --phased-effect-vert-2: 0px var(--phase-gap) 0px var(--clr-tertiary-500);
+  --phased-effect-vert-3: 0px var(--phase-gap) 0px var(--clr-secondary-300);
+  --phased-effect-vert-transparent: 0px var(--phase-gap) 0px
+    var(--clr-secondary-300);
+}

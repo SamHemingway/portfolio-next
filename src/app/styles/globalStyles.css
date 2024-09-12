@@ -1,0 +1,54 @@
+@import url("reset.css");
+@import url("customProperties.css");
+@import url("layoutPrimitives.css");
+
+/* ---------------------------------------------------------------------- */
+/*                              BASIC STYLING                             */
+/* ---------------------------------------------------------------------- */
+
+*:focus-visible {
+  outline: 5px solid var(--clr-tertiary-800);
+  outline-offset: 3px;
+}
+
+html {
+  scroll-padding-block-start: 6rem;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--dark-bg);
+  color: var(--dark-content);
+  font-family: var(--ff-primary);
+}
+
+h2 {
+  font-family: var(--ff-secondary);
+  font-size: var(--space-l-xl);
+  margin-block-end: var(--space-xs-s);
+  text-align: center;
+}
+
+h3 > svg {
+  width: 1em;
+}
+
+.card__hero-img {
+  width: 100%;
+}
+
+@media (min-width: 56.25rem) {
+  h2 {
+    text-align: left;
+  }
+}
+
+section {
+  margin-block-end: var(--space-l-xl);
+}
+
+.calendly-overlay {
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  background: hsla(0, 0%, 0%, 0.8);
+}

@@ -1,6 +1,6 @@
+"use client";
 import React from "react";
 import useSessionStorageState from "use-session-storage-state";
-import { Variants, Variant } from "framer-motion";
 
 interface AnimationProvider {
   children: React.ReactNode;
@@ -12,8 +12,14 @@ interface AnimationProviderValues {
   variants: any;
 }
 
+const defaultContextValue: AnimationProviderValues = {
+  shouldReduceMotion: false,
+  hasVisited: false,
+  variants: {},
+};
+
 export const AnimationContext =
-  React.createContext<AnimationProviderValues | null>(null);
+  React.createContext<AnimationProviderValues>(defaultContextValue);
 
 function AnimationProvider({ children }: AnimationProvider) {
   const [hasVisited, setHasVisited] = useSessionStorageState<
@@ -24,12 +30,16 @@ function AnimationProvider({ children }: AnimationProvider) {
     if (!hasVisited) setHasVisited(true);
   });
 
-  function userPrefersReducedMotion() {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    return mediaQuery.matches;
-  }
+  let shouldReduceMotion = false;
 
-  const shouldReduceMotion = userPrefersReducedMotion();
+  React.useEffect(() => {
+    function userPrefersReducedMotion() {
+      const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+      return mediaQuery.matches;
+    }
+
+    shouldReduceMotion = userPrefersReducedMotion();
+  });
 
   const animationTimings = {
     phaseOne: 0,

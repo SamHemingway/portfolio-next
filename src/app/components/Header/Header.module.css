@@ -14,7 +14,7 @@
   z-index: 3;
 }
 
-nav {
+.nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,7 +31,7 @@ nav {
 }
 
 @media (min-width: 56.25rem) {
-  nav {
+  .nav {
     padding-block: 0;
   }
 }

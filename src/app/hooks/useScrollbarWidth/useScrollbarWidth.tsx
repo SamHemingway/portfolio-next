@@ -1,3 +1,5 @@
+"use client";
+
 function useScrollbarWidth() {
   function calculateScrollbarWidth() {
     // Create a div with a scrollbar

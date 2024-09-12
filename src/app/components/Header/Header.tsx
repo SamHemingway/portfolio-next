@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Logo from "../Logo";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
@@ -7,15 +8,10 @@ import Button from "../Button";
 import NavLinks from "../NavLinks";
 import { motion } from "framer-motion";
 import { AnimationContext } from "../../contexts/AnimationProvider";
-import { PopupButton } from "react-calendly";
 
-interface Header {
-  menuIsOpen: boolean;
-  setMenuIsOpen: (isOpen: boolean) => void;
-}
-
-function Header({ menuIsOpen, setMenuIsOpen }: Header) {
+function Header() {
   const { variants } = React.useContext(AnimationContext);
+  const [menuIsOpen, setMenuIsOpen] = React.useState(false);
   const navLinks = [
     { text: "why sam", id: "/#why" },
     { text: "experience", id: "/#projects" },
@@ -29,7 +25,7 @@ function Header({ menuIsOpen, setMenuIsOpen }: Header) {
       initial="start"
       animate="finish"
     >
-      <nav>
+      <nav className={styles.nav}>
         <div className={styles.leftSide}>
           <Logo menuIsOpen={menuIsOpen} />
           <IconList />
@@ -40,17 +36,7 @@ function Header({ menuIsOpen, setMenuIsOpen }: Header) {
           tabIndex={-1}
           as="div"
         >
-          <PopupButton
-            url="https://calendly.com/hemingway/hiresam"
-            rootElement={document.getElementById("root")}
-            text="Let's talk"
-            styles={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              textTransform: "uppercase",
-            }}
-          />
+          "hey"
         </Button>
         <HamburgerMenu
           menuIsOpen={menuIsOpen}

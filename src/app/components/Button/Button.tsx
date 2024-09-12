@@ -23,7 +23,7 @@ function Button({
   if (size) computedStyles += ` ${styles[size]}`;
 
   const hasButtonChild = React.Children.toArray(children).some((child: any) => {
-    return child.type.name === "PopupButton2";
+    return child.type?.name === "PopupButton2";
   });
 
   return hasButtonChild ? (

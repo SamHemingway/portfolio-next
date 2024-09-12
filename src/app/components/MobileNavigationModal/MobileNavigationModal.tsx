@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import styles from "./MobileNavigationModal.module.css";
 import * as Dialog from "@radix-ui/react-dialog";

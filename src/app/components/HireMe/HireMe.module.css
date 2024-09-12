@@ -10,10 +10,6 @@
   }
 }
 
-:root {
-  --hero-margin: 8rem;
-}
-
 .heroWrapper {
   margin-block-start: 0;
   margin-block-end: calc(-1 * var(--hero-margin));

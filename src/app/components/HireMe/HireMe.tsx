@@ -1,11 +1,15 @@
+"use client";
 import React from "react";
 import styles from "./HireMe.module.css";
 import Headshot from "../Headshot";
 import SlideIntoView from "../SlideIntoView";
-import { PopupButton } from "react-calendly";
 import Button from "../Button";
 
 function HireMe() {
+  let isMobile;
+  React.useEffect(() => {
+    isMobile = window.innerWidth <= 500;
+  });
   return (
     <SlideIntoView id="hire">
       <div className={`wrapper ${styles.heroWrapper}`}>
@@ -31,22 +35,11 @@ function HireMe() {
           <Button
             variant="cta"
             size="large"
-            stretch={window.innerWidth <= 500}
+            stretch={isMobile}
             tabIndex={-1}
             as="div"
           >
-            <PopupButton
-              url="https://calendly.com/hemingway/hiresam"
-              rootElement={document.getElementById("root")}
-              text="Let's talk"
-              styles={{
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                textTransform: "uppercase",
-                color: "inherit",
-              }}
-            />
+            Hey
           </Button>
         </div>
       </article>
