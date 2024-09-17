@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { motion, useInView, MotionProps } from "framer-motion";
 import { AnimationContext } from "../../contexts/AnimationProvider";

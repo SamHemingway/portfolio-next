@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import styles from "./CollapsibleCardDeck.module.css";
 import { Disclosure as Card } from "@headlessui/react";

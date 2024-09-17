@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import styles from "./Hero.module.css";
 import { motion } from "framer-motion";
@@ -6,7 +7,7 @@ import Heading from "../Primitives/Heading";
 import { AnimationContext } from "../../contexts/AnimationProvider";
 
 interface Hero {
-  image: boolean;
+  image?: boolean;
   title: string;
   children: React.ReactNode;
 }

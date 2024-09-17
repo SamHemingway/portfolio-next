@@ -1,3 +1,4 @@
+"use client";
 import React, { ForwardedRef } from "react";
 import styles from "./Heading.module.css";
 import { motion, MotionProps } from "framer-motion";
@@ -16,7 +17,7 @@ const Header = React.forwardRef<HTMLElement, HeaderProps>(
     const MotionTag = motion(TagPrimitive as React.ElementType);
 
     let computedStyles = `${styles.headerBase}`;
-    if (level) computedStyles += ` ${styles[level]}`;
+    if (level === 1) computedStyles += ` ${styles.mainHeader}`;
 
     return (
       <MotionTag

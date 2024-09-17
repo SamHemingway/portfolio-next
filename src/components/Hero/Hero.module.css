@@ -1,8 +1,6 @@
-:root {
-  --hero-margin: var(--space-2xl-3xl);
-}
-
 .heroWrapper {
+  --hero-margin: var(--space-2xl-3xl);
+
   margin-block-start: var(--hero-margin);
   margin-block-end: calc(-1 * var(--hero-margin));
   display: flex;

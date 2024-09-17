@@ -1,0 +1,62 @@
+.innerWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@supports (-webkit-appearance: none) {
+  .mainScreenshot > * {
+    will-change: filter;
+    filter: drop-shadow(var(--phased-effect-1))
+      drop-shadow(var(--phased-effect-2)) drop-shadow(var(--phased-effect-3));
+    animation: none;
+    inline-size: 100%;
+  }
+}
+
+.mainScreenshot {
+  aspect-ratio: 16 / 7;
+}
+
+.buttonLinks {
+  display: flex;
+  justify-content: space-evenly;
+  gap: var(--space-m-l);
+}
+
+.projectHeader {
+  line-height: 1em;
+  margin-block-end: 0;
+}
+
+.pillsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.pillWrapper {
+  flex: 1;
+}
+
+.pillHeader {
+  text-transform: uppercase;
+  text-align: center;
+  margin-block-end: 0;
+  font-family: revert;
+  font-size: 1.15em;
+}
+
+@media (min-width: 56.25rem) {
+  .pillHeader {
+    text-align: left;
+  }
+
+  .pillsSection {
+    flex-direction: row;
+  }
+
+  .buttonLinks {
+    justify-content: flex-start;
+  }
+}

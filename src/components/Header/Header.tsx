@@ -2,12 +2,12 @@
 import React from "react";
 import Logo from "../Logo";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
-import IconList from "../IconList";
+import SocialIcons from "../SocialIcons";
 import styles from "./Header.module.css";
 import Button from "../Button";
 import NavLinks from "../NavLinks";
 import { motion } from "framer-motion";
-import { AnimationContext } from "../../contexts/AnimationProvider";
+import { AnimationContext } from "@/contexts/AnimationProvider";
 
 function Header() {
   const { variants } = React.useContext(AnimationContext);
@@ -28,7 +28,7 @@ function Header() {
       <nav className={styles.nav}>
         <div className={styles.leftSide}>
           <Logo menuIsOpen={menuIsOpen} />
-          <IconList />
+          <SocialIcons />
         </div>
         <NavLinks data={navLinks} />
         <Button

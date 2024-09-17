@@ -3,7 +3,7 @@ import styles from "./ProjectCards.module.css";
 import Parser from "html-react-parser";
 import { motion } from "framer-motion";
 import { AnimationContext } from "../../contexts/AnimationProvider";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 interface ProjectCard {
   title: string;
@@ -34,7 +34,7 @@ function ProjectCards({ projects }: { projects: ProjectCard[] }) {
             tabIndex={-1}
           >
             <Link
-              to={project.href}
+              href={project.href}
               className={`${styles.card} ${
                 project.disabled && styles.disabled
               }`}

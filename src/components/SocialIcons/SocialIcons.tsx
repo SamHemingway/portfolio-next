@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./IconList.module.css";
+import styles from "./SocialIcons.module.css";
 
 const data = [
   {
@@ -24,7 +24,7 @@ interface Socials {
   iconSize?: "large" | "small";
 }
 
-function Socials({ forceVisible = false, iconSize }: Socials) {
+function SocialIcons({ forceVisible = false, iconSize }: Socials) {
   const inlineStyles = forceVisible ? { display: "flex" } : undefined;
 
   const iconStyles =
@@ -61,4 +61,4 @@ function Socials({ forceVisible = false, iconSize }: Socials) {
   );
 }
 
-export default Socials;
+export default SocialIcons;

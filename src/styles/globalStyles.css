@@ -38,11 +38,15 @@ h3 > svg {
 }
 
 @media (min-width: 56.25rem) {
-  h2 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     text-align: left;
   }
 }
-
 section {
   margin-block-end: var(--space-l-xl);
 }

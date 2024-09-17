@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import React from "react";
-import Header from "@/app/components/Header";
-import Footer from "@/app/components/Footer";
-import HireMe from "@/app/components/HireMe";
-import AnimationProvider from "@/app/contexts/AnimationProvider";
-import "./styles/globalStyles.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HireMe from "@/components/HireMe";
+import AnimationProvider from "@/contexts/AnimationProvider";
+import "@/styles/globalStyles.css";
 import { Quicksand, Rubik } from "next/font/google";
 
 const quicksand = Quicksand({

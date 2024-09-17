@@ -3,7 +3,7 @@ import styles from "./Pills.module.css";
 
 interface Pills {
   content: string[];
-  style: React.CSSProperties;
+  style?: React.CSSProperties;
 }
 
 function Pills({ content, style }: Pills) {
