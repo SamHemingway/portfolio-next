@@ -12,7 +12,7 @@ function Projects() {
       `,
       id: "dictionary",
       heroImg: "dictionary",
-      href: "/dictionary",
+      href: "/projects/dictionary",
       disabled: false,
     },
     {
@@ -27,7 +27,7 @@ function Projects() {
         `,
       id: "project-b",
       heroImg: "companyLogos",
-      href: "/experience",
+      href: "/projects/experience",
       important: true,
       disabled: false,
     },
@@ -36,7 +36,7 @@ function Projects() {
       content: `<p>My favourite video game has 95 unique campaigns to complete.</p><p>But there's no way to track your progress and — whilst a spreadsheet does the job — I felt the community deserved better.</p>`,
       id: "immortal-tracker",
       heroImg: "immortalTracker",
-      href: "/immortal-tracker",
+      href: "/projects/immortal-tracker",
       disabled: false,
     },
   ];
