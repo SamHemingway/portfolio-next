@@ -1,16 +1,10 @@
+"use client";
 import React from "react";
 import styles from "./HamburgerIcon.module.css";
 import * as Dialog from "@radix-ui/react-dialog";
 import { motion } from "framer-motion";
 import { AnimationContext } from "../../contexts/AnimationProvider";
-import dynamic from "next/dynamic";
-
-const useScrollbarWidth = dynamic(
-  () => import("../../hooks/useScrollbarWidth"),
-  {
-    ssr: false,
-  }
-);
+import useScrollbarWidth from "@/hooks/useScrollbarWidth";
 
 interface HamburgerIcon {
   menuIsOpen: boolean;
