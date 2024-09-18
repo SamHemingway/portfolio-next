@@ -8,6 +8,7 @@ import Button from "../Button";
 import NavLinks from "../NavLinks";
 import { motion } from "framer-motion";
 import { AnimationContext } from "@/contexts/AnimationProvider";
+import BookCallButton from "../BookCallButton";
 
 function Header() {
   const { variants } = React.useContext(AnimationContext);
@@ -31,13 +32,7 @@ function Header() {
           <SocialIcons />
         </div>
         <NavLinks data={navLinks} />
-        <Button
-          variant="letsTalk"
-          tabIndex={-1}
-          as="div"
-        >
-          "hey"
-        </Button>
+        <BookCallButton variant="header">Let's talk</BookCallButton>
         <HamburgerMenu
           menuIsOpen={menuIsOpen}
           setMenuIsOpen={setMenuIsOpen}

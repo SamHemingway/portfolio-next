@@ -3,7 +3,7 @@ import styles from "./Button.module.css";
 
 export interface ButtonType extends React.ComponentPropsWithoutRef<"button"> {
   children: React.ReactNode;
-  variant?: "cta" | "fill" | "letsTalk";
+  variant?: "cta" | "fill" | "header";
   stretch?: Boolean;
   size?: "large" | "small";
   as?: string;

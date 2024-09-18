@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./HireMe.module.css";
 import Headshot from "../Headshot";
 import SlideIntoView from "../SlideIntoView";
-import Button from "../Button";
+import BookCallButton from "../BookCallButton";
 
 function HireMe() {
   let isMobile;
@@ -32,15 +32,12 @@ function HireMe() {
             I'd be happy to tell you more about him (and, answer any questions
             you might have about me, of course).
           </p>
-          <Button
-            variant="cta"
-            size="large"
+          <BookCallButton
             stretch={isMobile}
-            tabIndex={-1}
-            as="div"
+            variant="cta"
           >
-            Hey
-          </Button>
+            Let's talk
+          </BookCallButton>
         </div>
       </article>
     </SlideIntoView>
