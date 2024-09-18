@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./HamburgerIcon.module.css";
 import * as Dialog from "@radix-ui/react-dialog";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { AnimationContext } from "../../contexts/AnimationProvider";
 
 interface HamburgerIcon {
@@ -19,7 +19,7 @@ function HamburgerIcon({ menuIsOpen, toggleHandler }: HamburgerIcon) {
       className={styles.icon}
       onClick={toggleHandler}
     >
-      <motion.svg
+      <m.svg
         viewBox="2.5 2.5 95 95"
         className={styles.svg}
         whileHover={{ scale: 1.1 }}
@@ -47,7 +47,7 @@ function HamburgerIcon({ menuIsOpen, toggleHandler }: HamburgerIcon) {
             ></stop>
           </linearGradient>
         </defs>
-        <motion.rect
+        <m.rect
           width="95"
           height="95"
           x="2.5"
@@ -56,15 +56,15 @@ function HamburgerIcon({ menuIsOpen, toggleHandler }: HamburgerIcon) {
           ry="10"
           variants={variants.hamburgerIcon.wrapper}
           animate={animation}
-        ></motion.rect>
-        <motion.path
+        ></m.rect>
+        <m.path
           className={styles.line}
           d="M 20 30 L 80 30"
           strokeLinecap="round"
           variants={variants.hamburgerIcon.line1}
           animate={animation}
-        ></motion.path>
-        <motion.path
+        ></m.path>
+        <m.path
           className={styles.line}
           d="M 20 50 L 80 50"
           strokeLinecap="round"
@@ -72,15 +72,15 @@ function HamburgerIcon({ menuIsOpen, toggleHandler }: HamburgerIcon) {
           transition={{ duration: 0.1 }}
           animate={animation}
           opacity="1"
-        ></motion.path>
-        <motion.path
+        ></m.path>
+        <m.path
           className={styles.line}
           d="M 20 70 L 80 70"
           strokeLinecap="round"
           variants={variants.hamburgerIcon.line3}
           animate={animation}
-        ></motion.path>
-      </motion.svg>
+        ></m.path>
+      </m.svg>
       <span className="sr-only">Menu</span>
     </Dialog.Trigger>
   );

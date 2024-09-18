@@ -3,7 +3,7 @@ import React from "react";
 import CollapsibleCardDeck from "../CollapsibleCardDeck";
 import SlideIntoView from "../SlideIntoView";
 import styles from "./WhySam.module.css";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { AnimationContext } from "../../contexts/AnimationProvider";
 
 function WhySam() {
@@ -11,7 +11,7 @@ function WhySam() {
 
   return (
     <SlideIntoView id="why">
-      <motion.div
+      <m.div
         className={`wrapper ${styles.wrapper}`}
         aria-label="Why hire sam?"
         variants={variants.fade}
@@ -23,7 +23,7 @@ function WhySam() {
           data={traits}
           cardsOpen={3}
         />
-      </motion.div>
+      </m.div>
     </SlideIntoView>
   );
 }

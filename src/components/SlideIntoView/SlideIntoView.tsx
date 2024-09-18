@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { motion, useInView, MotionProps } from "framer-motion";
+import { m, useInView, MotionProps } from "framer-motion";
 import { AnimationContext } from "../../contexts/AnimationProvider";
 
 interface SlideIntoView {
@@ -15,7 +15,7 @@ function SlideIntoView({ children, ...delegated }: finalType) {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <motion.section
+    <m.section
       ref={ref}
       initial={{ y: "0px" }}
       animate={{
@@ -30,7 +30,7 @@ function SlideIntoView({ children, ...delegated }: finalType) {
       {...delegated}
     >
       {children}
-    </motion.section>
+    </m.section>
   );
 }
 

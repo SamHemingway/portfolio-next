@@ -6,6 +6,7 @@ import HireMe from "@/components/HireMe";
 import AnimationProvider from "@/contexts/AnimationProvider";
 import "@/styles/globalStyles.css";
 import { Quicksand, Rubik } from "next/font/google";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -38,12 +39,17 @@ export default function RootLayout({
       className={`${quicksand.variable} ${rubik.variable}`}
     >
       <body>
-        <AnimationProvider>
-          <Header />
-          <main>{children}</main>
-          <HireMe />
-          <Footer />
-        </AnimationProvider>
+        <LazyMotion
+          features={domAnimation}
+          strict
+        >
+          <AnimationProvider>
+            <Header />
+            <main>{children}</main>
+            <HireMe />
+            <Footer />
+          </AnimationProvider>
+        </LazyMotion>
       </body>
     </html>
   );

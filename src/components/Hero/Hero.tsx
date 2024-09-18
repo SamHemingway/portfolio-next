@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import styles from "./Hero.module.css";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Headshot from "../Headshot";
 import Heading from "../Primitives/Heading";
 import { AnimationContext } from "../../contexts/AnimationProvider";
@@ -30,7 +30,7 @@ function Hero({ image, title, children }: Hero) {
         )}
         <Heading level={1}>{title}</Heading>
       </div>
-      <motion.section
+      <m.section
         className={`${styles.leadWrapper} ${
           !image && styles.leadWrapperNoImage
         }`}
@@ -39,7 +39,7 @@ function Hero({ image, title, children }: Hero) {
         animate={"end"}
       >
         <div className="wrapper">{children}</div>
-      </motion.section>
+      </m.section>
     </>
   );
 }

@@ -6,7 +6,7 @@ import SocialIcons from "../SocialIcons";
 import styles from "./Header.module.css";
 import Button from "../Button";
 import NavLinks from "../NavLinks";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { AnimationContext } from "@/contexts/AnimationProvider";
 import BookCallButton from "../BookCallButton";
 
@@ -20,7 +20,7 @@ function Header() {
   ];
 
   return (
-    <motion.header
+    <m.header
       className={styles.wrapper}
       variants={variants.springDown}
       initial="start"
@@ -39,7 +39,7 @@ function Header() {
           navLinks={navLinks}
         />
       </nav>
-    </motion.header>
+    </m.header>
   );
 }
 

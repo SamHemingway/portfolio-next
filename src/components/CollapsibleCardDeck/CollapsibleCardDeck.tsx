@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./CollapsibleCardDeck.module.css";
 import { Disclosure as Card } from "@headlessui/react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { AnimationContext } from "../../contexts/AnimationProvider";
 
 export interface CollapsibleCardDeckDataItem {
@@ -60,7 +60,7 @@ function CollapsibleCardDeck({
             {({ open }) => {
               return (
                 <>
-                  <motion.div
+                  <m.div
                     variants={variantsTitle}
                     whileTap="tap"
                     whileFocus="hover"
@@ -72,7 +72,7 @@ function CollapsibleCardDeck({
                     <Card.Button className={styles.cardTitle}>
                       {item.title}
 
-                      <motion.div
+                      <m.div
                         variants={variantsIcon}
                         initial="start"
                         animate="start"
@@ -82,24 +82,24 @@ function CollapsibleCardDeck({
                         tabIndex={-1}
                       >
                         <ExpandIcon open={open} />
-                      </motion.div>
+                      </m.div>
                     </Card.Button>
-                  </motion.div>
+                  </m.div>
                   <Card.Panel>
-                    <motion.div
+                    <m.div
                       variants={variantsPanel}
                       initial="start"
                       animate="end"
                     >
-                      <motion.div
+                      <m.div
                         variants={variantsPanelText}
                         className={styles.cardBody}
                         initial="start"
                         animate="end"
                       >
                         {item.content}
-                      </motion.div>
-                    </motion.div>
+                      </m.div>
+                    </m.div>
                   </Card.Panel>
                 </>
               );
@@ -122,27 +122,27 @@ function ExpandIcon({ open }: { open: Boolean }) {
   }
 
   return (
-    <motion.svg
+    <m.svg
       viewBox="0 0 100 100"
       className={styles.icon}
     >
-      <motion.ellipse
+      <m.ellipse
         cx="50"
         cy="50"
         rx="40"
         ry="40"
         className={styles.iconCircle}
-      ></motion.ellipse>
-      <motion.path
+      ></m.ellipse>
+      <m.path
         className={styles.iconLine}
         d="M 70 50 L 30 50"
-      ></motion.path>
-      <motion.path
+      ></m.path>
+      <m.path
         className={styles.iconLine}
         animate={iconAnimation()}
         d="M 50 30 L 50 70"
-      ></motion.path>
-    </motion.svg>
+      ></m.path>
+    </m.svg>
   );
 }
 

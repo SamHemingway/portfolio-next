@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Headshot.module.css";
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { AnimationContext } from "../../contexts/AnimationProvider";
 
 interface Headshot {
@@ -17,7 +17,7 @@ function Headshot({ subject, altText, animate = true }: Headshot) {
   const { variants } = React.useContext(AnimationContext);
 
   return (
-    <motion.picture
+    <m.picture
       className={styles.headshot}
       variants={animate && variants.springUp}
       initial="start"
@@ -37,7 +37,7 @@ function Headshot({ subject, altText, animate = true }: Headshot) {
         src={`/assets/images/${subject}.png`}
         alt={altText}
       />
-    </motion.picture>
+    </m.picture>
   );
 }
 

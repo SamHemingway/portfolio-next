@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./ProjectCards.module.css";
 import Parser from "html-react-parser";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { AnimationContext } from "../../contexts/AnimationProvider";
 import Link from "next/link";
 
@@ -23,7 +23,7 @@ function ProjectCards({ projects }: { projects: ProjectCard[] }) {
     <ul className={styles.deck}>
       {projects.map((project) => {
         return (
-          <motion.li
+          <m.li
             key={project.id}
             className={`${styles.cardWrapper} ${
               project.important && styles.importantCard
@@ -59,7 +59,7 @@ function ProjectCards({ projects }: { projects: ProjectCard[] }) {
                 {Parser(project.content)}
               </div>
             </Link>
-          </motion.li>
+          </m.li>
         );
       })}
     </ul>
