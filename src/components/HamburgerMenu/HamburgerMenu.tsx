@@ -2,11 +2,7 @@ import React from "react";
 import styles from "./HamburgerMenu.module.css";
 import * as Dialog from "@radix-ui/react-dialog";
 import MobileNavigationModal from "../MobileNavigationModal/MobileNavigationModal";
-import dynamic from "next/dynamic";
-
-const NoSSRHamburgerIcon = dynamic(() => import("@/hooks/useScrollbarWidth"), {
-  ssr: false,
-});
+import HamburgerIcon from "../HamburgerIcon";
 
 export interface NavLinkType {
   text: string;
@@ -32,8 +28,7 @@ function HamburgerMenu({ menuIsOpen, setMenuIsOpen, navLinks }: HamburgerMenu) {
         open={menuIsOpen}
         onOpenChange={setMenuIsOpen}
       >
-        <NoSSRHamburgerIcon
-          //@ts-ignore
+        <HamburgerIcon
           menuIsOpen={menuIsOpen}
           toggleHandler={toggleMenu}
         />

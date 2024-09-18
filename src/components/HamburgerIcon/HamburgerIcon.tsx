@@ -4,7 +4,6 @@ import styles from "./HamburgerIcon.module.css";
 import * as Dialog from "@radix-ui/react-dialog";
 import { motion } from "framer-motion";
 import { AnimationContext } from "../../contexts/AnimationProvider";
-import useScrollbarWidth from "@/hooks/useScrollbarWidth";
 
 interface HamburgerIcon {
   menuIsOpen: boolean;
@@ -15,17 +14,10 @@ function HamburgerIcon({ menuIsOpen, toggleHandler }: HamburgerIcon) {
   const { variants } = React.useContext(AnimationContext);
   let animation = menuIsOpen ? "open" : "closed";
 
-  const scrollbarWidth = useScrollbarWidth();
-
   return (
     <Dialog.Trigger
       className={styles.icon}
       onClick={toggleHandler}
-      style={
-        menuIsOpen && scrollbarWidth
-          ? { position: "relative", right: `${scrollbarWidth}px` }
-          : undefined
-      }
     >
       <motion.svg
         viewBox="2.5 2.5 95 95"
