@@ -24,7 +24,11 @@ function CollapsibleCardDeck({
 }: CollapsibleCardDeck) {
   const { variants } = React.useContext(AnimationContext);
 
-  const [expanded, _] = React.useState(window.innerWidth > 785);
+  const [expanded, setExpanded] = React.useState(false);
+
+  React.useEffect(() => {
+    setExpanded(window.innerWidth > 785);
+  }, []);
 
   const variantsTitle = variants.cards.title;
 
