@@ -1,5 +1,5 @@
 .heroWrapper {
-  --hero-margin: var(--space-2xl-3xl);
+  --hero-margin: 8rem;
 
   margin-block-start: var(--hero-margin);
   margin-block-end: calc(-1 * var(--hero-margin));
@@ -29,7 +29,7 @@
 .leadWrapper {
   color: var(--light-content);
   background: var(--light-bg);
-  padding-block-start: var(--hero-margin);
+  padding-block-start: 8rem;
   padding-block-end: 2rem;
   position: relative;
 }

@@ -1,7 +1,11 @@
 "use client";
 import React from "react";
 import styles from "./CollapsibleCardDeck.module.css";
-import { Disclosure as Card } from "@headlessui/react";
+import {
+  Disclosure as Card,
+  DisclosureButton as CardButton,
+  DisclosurePanel as CardPanel,
+} from "@headlessui/react";
 import { m } from "framer-motion";
 import { AnimationContext } from "../../contexts/AnimationProvider";
 
@@ -69,7 +73,7 @@ function CollapsibleCardDeck({
                     className={`${styles.cardTitleBG} ${styles[item.id]}`}
                     tabIndex={-1}
                   >
-                    <Card.Button className={styles.cardTitle}>
+                    <CardButton className={styles.cardTitle}>
                       {item.title}
 
                       <m.div
@@ -83,9 +87,9 @@ function CollapsibleCardDeck({
                       >
                         <ExpandIcon open={open} />
                       </m.div>
-                    </Card.Button>
+                    </CardButton>
                   </m.div>
-                  <Card.Panel>
+                  <CardPanel>
                     <m.div
                       variants={variantsPanel}
                       initial="start"
@@ -100,7 +104,7 @@ function CollapsibleCardDeck({
                         {item.content}
                       </m.div>
                     </m.div>
-                  </Card.Panel>
+                  </CardPanel>
                 </>
               );
             }}
