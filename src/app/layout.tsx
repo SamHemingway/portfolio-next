@@ -7,6 +7,7 @@ import AnimationProvider from "@/contexts/AnimationProvider";
 import "@/styles/globalStyles.css";
 import { Quicksand, Rubik } from "next/font/google";
 import { LazyMotion, domAnimation } from "framer-motion";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -50,6 +51,7 @@ export default function RootLayout({
             <Footer />
           </AnimationProvider>
         </LazyMotion>
+        <SpeedInsights />
       </body>
     </html>
   );
