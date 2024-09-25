@@ -63,8 +63,8 @@ const traits = [
           actionable feedback to improve my output.
         </p>
         <p>
-          I can't wait to see how much I learn from coding reviews with seasoned
-          pros.
+          Best thing I ever did. Nothing makes you grow quicker than making
+          mistakes, identifying them, and learning from them.
         </p>
       </>
     ),
