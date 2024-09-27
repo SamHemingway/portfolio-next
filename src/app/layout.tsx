@@ -8,6 +8,7 @@ import "@/styles/globalStyles.css";
 import { Quicksand, Rubik } from "next/font/google";
 import { LazyMotion, domAnimation } from "framer-motion";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -52,6 +53,7 @@ export default function RootLayout({
           </AnimationProvider>
         </LazyMotion>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
