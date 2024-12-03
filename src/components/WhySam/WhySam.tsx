@@ -13,15 +13,15 @@ function WhySam() {
     <SlideIntoView id="why">
       <m.div
         className={`wrapper ${styles.wrapper}`}
-        aria-label="Why hire sam?"
+        aria-label="What makes Sam a great SE?"
         variants={variants.fade}
         initial="start"
         animate="end"
       >
-        <h2>sam is...</h2>
+        <h2>what makes sam a great SE?</h2>
         <CollapsibleCardDeck
           data={traits}
-          cardsOpen={3}
+          cardsOpen={6}
         />
       </m.div>
     </SlideIntoView>
@@ -32,106 +32,109 @@ export default WhySam;
 
 const traits = [
   {
-    title: "curious",
+    title: "Custom Demos",
     content: (
       <>
         <p>
-          The best professional compliment I ever received from a sales pro with
-          decades of experience:
+          I've built custom demos that have helped close enterprise
+          opportunities worth over $1M in revenue.
         </p>
         <p>
-          “Sam, it's clear that you're a student of the craft of sales — it'll
-          take you far.”
+          I had to learn web technologies like CSS and JS overnight, and
+          decipher an API with no documentation.
         </p>
-        <p>
-          If there's a better way to do something, I pride myself on finding it.
-        </p>
+        <p>Genuinely the most fun I've had in my career so far.</p>
       </>
     ),
-    id: "curious",
+    id: "meticulous",
   },
   {
-    title: "coachable",
+    title: "Technical knowledge",
     content: (
       <>
         <p>
-          Have you ever listened to your recorded voice and wanted to die
-          inside?
+          I self-taught myself frontend web technologies to upskill myself and
+          make sure I could walk the walk.
         </p>
         <p>
-          I did that, every week, as me and my manager reviewed my calls to find
-          actionable feedback to improve my output.
+          Since then, I've shipped code in production code bases to fix bugs and
+          launch new functionality.
         </p>
         <p>
-          Best thing I ever did. Nothing makes you grow quicker than making
-          mistakes, identifying them, and learning from them.
+          I've won the trust of senior engineers, to the point where they've
+          recommended I look into a career as a developer.
         </p>
       </>
     ),
     id: "coachable",
   },
   {
-    title: "meticulous",
+    title: "Hits quota",
     content: (
       <>
+        <p>As an AE, my average quota attainment came in at 123%.</p>
         <p>
-          Details matter. They're crucial to earning the trust of your prospect
-          or customer.
-        </p>
-        <p>I work hard to do that by leaving no stone unturned.</p>
-        <p>
-          Whether my customer is technically minded or not, I strive to prove to
-          them that I deserve their trust.
-        </p>
-      </>
-    ),
-    id: "meticulous",
-  },
-  {
-    title: "empathetic",
-    content: (
-      <>
-        <p>
-          Any large scale project requires working with multiple stakeholders
-          across different teams with different priorities.
+          This included winning the top performing AE in the entire Hopin sales
+          org in my first quarter as an AE, coming in at 147%.
         </p>
         <p>
-          I'm experienced in communicating with others to ensure that everyone
-          feels heard and achieve their objectives.
-        </p>
-      </>
-    ),
-    id: "empathetic",
-  },
-  {
-    title: "forward thinking",
-    content: (
-      <>
-        <p>
-          I hate that feeling of knowing you've taken a shortcut that might
-          cause issues further down the line.
-        </p>
-        <p>
-          If there's a way to build something so that it's easily repeatable,
-          scalable and modular, I'll do it.
-        </p>
-        <p>
-          Yes, it might take a little longer now. But you're saving you and your
-          teammates much more time in the future. Totally worth it.
+          I know how stressful an AEs job is. I can't wait to help them close
+          more deals.
         </p>
       </>
     ),
     id: "forward",
   },
   {
-    title: "autonomous",
+    title: "solutions focused",
     content: (
       <>
-        <p>At start-ups, there's rarely a playbook to follow.</p>
-        <p>I love it.</p>
         <p>
-          There's nothing more rewarding than independently finding, testing and
-          implementing a solution to a problem.
+          I've run over 300 disco and demos across 5 years of SaaS sales
+          experience.
+        </p>
+        <p>
+          That means I've learned the hard way that the only way to run a good
+          demo is to make it laser-focused on the prospects problems, and cut
+          out the rest.
+        </p>
+        <p>Say it with me: no to feature-dumping!</p>
+      </>
+    ),
+    id: "empathetic",
+  },
+  {
+    title: "Project Management",
+    content: (
+      <>
+        <p>
+          I've been involved in projects where I've had to manage both internal
+          and external stakeholders.
+        </p>
+        <p>
+          Like the time I helped the engineering team communicate API changes
+          better to CSMs to prevent breaking changes to 7 figure customer
+          events.
+        </p>
+        <p>
+          Or the time I worked with Sales Management across BUs to develop a
+          multi-product selling motion that increased ACV from $18k to $25k.
+        </p>
+      </>
+    ),
+    id: "curious",
+  },
+  {
+    title: "API experience",
+    content: (
+      <>
+        <p>
+          I've built integrations using REST APIs to solve business problems.
+        </p>
+        <p>
+          I've also shipped code to production code bases that consume in-house
+          APIs developed by a backend team, presenting data from databases to
+          those who need to see it.
         </p>
       </>
     ),

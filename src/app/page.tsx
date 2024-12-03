@@ -4,49 +4,37 @@ import WhySam from "@/components/WhySam";
 import Projects from "@/components/Projects";
 import FAQs from "@/components/FAQs";
 import styles from "./page.module.css";
-import Pills from "@/components/Pills";
 
 function Home() {
-  const skills = [
-    "SaaS Sales",
-    "Relationship Building",
-    "Project Management",
-    "Technical Demos",
-    "JavaScript",
-    "React",
-  ];
-
   return (
     <>
       <Hero
         image
-        title="hire a sales pro with top technical skills"
+        title="help undo the biggest mistake of sam's career"
       >
         <h2 className={styles.leadHeader}>
-          <span role="text">It's great to meet you. I'm Sam!</span>
+          <span role="text">Hell of a hook, right?</span>
         </h2>
         <p
           role="text"
           className={styles.leadBody}
         >
-          An experienced startup salesperson with a knack for quickly learning
-          technical skills.
+          At a crucial point in my career, I faced a choice: follow a promotion
+          path towards becoming an SE, or move up to AE.
         </p>
         <p
           role="text"
           className={styles.leadBody}
         >
-          For example, I taught myself web development. It seemed like fun. It
-          was.
+          I chose poorly. All of my biggest achievevments — and when I've had
+          the most fun — have arrived whilst moonlighting as an SE.
         </p>
         <p
           role="text"
           className={styles.leadBody}
         >
-          I'm looking for a role where I can combine my 2 loves: building deep
-          relationships with people, whilst satisfying my inner nerd.
+          I'm now looking to formalise that by landing an SE role.
         </p>
-        <Pills content={skills} />
       </Hero>
       <WhySam />
       <Projects />
