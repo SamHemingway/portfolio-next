@@ -4,7 +4,6 @@ import Logo from "../Logo";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 import SocialIcons from "../SocialIcons";
 import styles from "./Header.module.css";
-import Button from "../Button";
 import NavLinks from "../NavLinks";
 import { m } from "framer-motion";
 import { AnimationContext } from "@/contexts/AnimationProvider";
