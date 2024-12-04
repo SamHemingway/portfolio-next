@@ -37,11 +37,12 @@ const keyMetrics: ImpactCard[] = [
 
 const skills = [
   "Rest APIs",
-  "Custom Demos",
   "JavaScript",
   "React",
   "CSS",
   "HTML",
+  "Salesforce",
+  "HubSpot",
 ];
 
 export default Home;

@@ -17,13 +17,13 @@ function Projects() {
     },
     {
       title: "Sales Experience",
-      content: `<p>In a career spanning 4 years, I've:</p>
+      content: `<p>In a career spanning 5 years, I've:</p>
         <ul>
           <li>Regularly overachieved quota.</li>
           <li>Built technical demos for Fortune 100 companies.</li>
           <li>Implemented software and built processes from scratch.</li>
         </ul>
-        <p>Here are the details.</p>
+        <p>Here's my full resume in web format.</p>
         `,
       id: "project-b",
       heroImg: "companyLogos",
