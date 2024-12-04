@@ -37,7 +37,7 @@
   margin-inline-start: auto;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 62.5rem) {
   .navBar {
     display: flex;
     align-items: baseline;

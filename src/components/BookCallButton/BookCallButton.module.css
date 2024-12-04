@@ -46,7 +46,7 @@
   inline-size: 100%;
 }
 
-@media (min-width: 56.25rem) {
+@media (min-width: 62.5rem) {
   .letsTalk {
     display: block;
     background: var(--gradient-strong);

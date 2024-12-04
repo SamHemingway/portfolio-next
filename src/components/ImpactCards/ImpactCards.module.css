@@ -1,0 +1,34 @@
+.wrapper {
+  display: flex;
+  gap: var(--space-m-l);
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  margin-block: var(--space-2xs-xs);
+  justify-content: center;
+}
+
+.pill {
+  list-style: none;
+  max-inline-size: 10rem;
+  background: white;
+  padding: var(--space-xs-s);
+  border-radius: var(--rad-xs);
+  font-size: var(--space-xs-s);
+  font-weight: var(--fw-bold);
+  border: 1px solid var(--clr-secondary-500);
+  text-align: center;
+  filter: drop-shadow(var(--phased-effect-1))
+    drop-shadow(var(--phased-effect-2)) drop-shadow(var(--phased-effect-3));
+}
+
+.title {
+  text-align: center;
+  font-size: var(--space-l-xl);
+}
+
+@media (min-width: 62.5rem) {
+  .wrapper {
+    justify-content: start;
+  }
+}

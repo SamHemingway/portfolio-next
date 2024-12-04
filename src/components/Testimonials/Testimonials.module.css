@@ -1,0 +1,58 @@
+.deck {
+  padding: 0;
+  list-style: none;
+  column-gap: var(--space-xl-2xl);
+  row-gap: var(--space-s-m);
+  padding-block-start: var(--space-2xl-3xl);
+}
+
+.name {
+  font-size: var(--space-m);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  line-height: 1;
+}
+
+@media (min-width: 60rem) {
+  .deck {
+    margin-block: calc(-1 * var(--space-xl));
+  }
+}
+
+.cardWrapper {
+  background: var(--clr-secondary-500);
+  border-radius: var(--rad-xs);
+  filter: drop-shadow(var(--phased-effect-1))
+    drop-shadow(var(--phased-effect-2)) drop-shadow(var(--phased-effect-3));
+  margin-block: 0;
+}
+
+.cardImage {
+  max-inline-size: 7.5rem;
+  max-block-size: 7.5rem;
+  align-self: center;
+  border-radius: 9999999px;
+  border: var(--clr-primary-900) 2px solid;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  padding: var(--space-m-l);
+  color: var(--light-content);
+}
+
+.cardContent > p {
+  text-decoration: none;
+}
+
+.cardTopSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+}

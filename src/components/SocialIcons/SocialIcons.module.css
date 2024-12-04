@@ -27,7 +27,7 @@
   border-radius: 4px;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 62.5rem) {
   .wrapper {
     display: flex;
   }

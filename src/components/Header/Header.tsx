@@ -14,9 +14,9 @@ function Header() {
   const { variants } = React.useContext(AnimationContext);
   const [menuIsOpen, setMenuIsOpen] = React.useState(false);
   const navLinks = [
-    { text: "why sam", id: "/#why" },
+    { text: "about", id: "/#why" },
     { text: "experience", id: "/#projects" },
-    { text: "FAQs", id: "/#faqs" },
+    { text: "testimonials", id: "/#testimonials" },
   ];
 
   return (

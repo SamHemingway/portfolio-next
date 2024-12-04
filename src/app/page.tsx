@@ -4,43 +4,44 @@ import WhySam from "@/components/WhySam";
 import Projects from "@/components/Projects";
 import FAQs from "@/components/FAQs";
 import styles from "./page.module.css";
+import ImpactCards from "@/components/ImpactCards";
+import type { ImpactCard } from "@/components/ImpactCards";
+import Pills from "@/components/Pills";
+import TestimonialSection from "@/components/TestimonialSection";
 
 function Home() {
   return (
     <>
       <Hero
         image
-        title="help undo the biggest mistake of sam's career"
+        title="sam is a solutions expert with 5 years of saas experience"
       >
-        <h2 className={styles.leadHeader}>
-          <span role="text">Hell of a hook, right?</span>
-        </h2>
-        <p
-          role="text"
-          className={styles.leadBody}
-        >
-          At a crucial point in my career, I faced a choice: follow a promotion
-          path towards becoming an SE, or move up to AE.
-        </p>
-        <p
-          role="text"
-          className={styles.leadBody}
-        >
-          I chose poorly. All of my biggest achievevments — and when I've had
-          the most fun — have arrived whilst moonlighting as an SE.
-        </p>
-        <p
-          role="text"
-          className={styles.leadBody}
-        >
-          I'm now looking to formalise that by landing an SE role.
-        </p>
+        <ImpactCards content={keyMetrics} />
+        <Pills
+          content={skills}
+          style={{ marginBlockStart: "4rem" }}
+        />
       </Hero>
       <WhySam />
       <Projects />
-      <FAQs />
+      <TestimonialSection />
     </>
   );
 }
+
+const keyMetrics: ImpactCard[] = [
+  { title: "$1M+", content: "Revenue generated from custom demos" },
+  { title: "38.7%", content: "Increase in ACV on deals closed as an SE" },
+  { title: "123%", content: "Average career quota attainment" },
+];
+
+const skills = [
+  "Rest APIs",
+  "Custom Demos",
+  "JavaScript",
+  "React",
+  "CSS",
+  "HTML",
+];
 
 export default Home;

@@ -10,7 +10,7 @@
   outline-offset: 4px;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 62.5rem) {
   .icon {
     display: none;
   }

@@ -47,7 +47,7 @@
   font-size: 1.15em;
 }
 
-@media (min-width: 56.25rem) {
+@media (min-width: 62.5rem) {
   .pillHeader {
     text-align: left;
   }

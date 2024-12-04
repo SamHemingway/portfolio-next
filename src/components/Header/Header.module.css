@@ -30,7 +30,7 @@
   gap: var(--space-xs-s);
 }
 
-@media (min-width: 56.25rem) {
+@media (min-width: 62.5rem) {
   .nav {
     padding-block: 0;
   }
