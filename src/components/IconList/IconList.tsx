@@ -50,7 +50,7 @@ function Socials({ forceVisible = false, iconSize }: Socials) {
             >
               <img
                 src={src}
-                alt=""
+                alt={ariaLabel}
                 className={iconStyles}
               />
             </a>
