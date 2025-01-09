@@ -1,3 +1,7 @@
+export default async function Dictionary() {
+  return <div>Dictionary</div>;
+}
+
 // import React from "react";
 // import Hero from "@/components/Hero";
 // import styles from "../projects.module.css";

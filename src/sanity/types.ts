@@ -480,6 +480,12 @@ export type EXPERIENCE_BLOCK_QUERYResult = Array<{
   link?: string;
   main?: boolean;
 }>;
+// Variable: SOFT_SKILLS_QUERY
+// Query: *[_type == "skillPillList" && skillPills[]->skill match "*deep discovery*"][0]{  skillPills[]->{    skill  }}
+export type SOFT_SKILLS_QUERYResult = null;
+// Variable: HARD_SKILLS_QUERY
+// Query: *[_type == "skillPillList" && skillPills[]->skill match "*react*"][0]{  skillPills[]->{    skill  }}
+export type HARD_SKILLS_QUERYResult = null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -492,5 +498,7 @@ declare module "@sanity/client" {
     "*[_type == \"skillPillList\"][0]{\n  skillPills[]->{\n    skill\n  }\n}": SKILL_PILL_LIST_QUERYResult;
     "*[_type == \"skillBoxList\"][0]{\n  skillBoxes[]->{\n    title,\n    content,\n    image\n  }\n}": SKILL_BOX_LIST_QUERYResult;
     "*[_type == \"experienceBlock\"]": EXPERIENCE_BLOCK_QUERYResult;
+    "*[_type == \"skillPillList\" && skillPills[]->skill match \"*deep discovery*\"][0]{\n  skillPills[]->{\n    skill\n  }\n}": SOFT_SKILLS_QUERYResult;
+    "*[_type == \"skillPillList\" && skillPills[]->skill match \"*react*\"][0]{\n  skillPills[]->{\n    skill\n  }\n}": HARD_SKILLS_QUERYResult;
   }
 }

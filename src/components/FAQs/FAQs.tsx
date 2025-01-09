@@ -82,10 +82,10 @@ function FAQs() {
     <SlideIntoView id="faqs">
       <div className={`wrapper ${styles.wrapper}`}>
         <h2>faqs</h2>
-        <CollapsibleCardDeck
+        {/* <CollapsibleCardDeck
           data={questions}
           doubleColumn
-        />
+        /> */}
       </div>
     </SlideIntoView>
   );
