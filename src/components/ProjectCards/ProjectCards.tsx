@@ -1,22 +1,18 @@
 "use client";
 import React from "react";
 import styles from "./ProjectCards.module.css";
-import Parser from "html-react-parser";
 import { m } from "framer-motion";
 import { AnimationContext } from "../../contexts/AnimationProvider";
 import Link from "next/link";
-
-interface ProjectCard {
-  title: string;
-  content: string;
-  id: string;
-  heroImg: string;
-  href: string;
-  disabled: boolean;
-  important?: boolean;
-}
-
-function ProjectCards({ projects }: { projects: ProjectCard[] }) {
+import { EXPERIENCE_BLOCK_QUERYResult } from "@/sanity/types";
+import { PortableText } from "@portabletext/react";
+import { urlFor } from "@/sanity/lib/utils";
+import Image from "next/image";
+function ProjectCards({
+  projects,
+}: {
+  projects: EXPERIENCE_BLOCK_QUERYResult;
+}) {
   const { variants } = React.useContext(AnimationContext);
 
   return (
@@ -24,9 +20,9 @@ function ProjectCards({ projects }: { projects: ProjectCard[] }) {
       {projects.map((project) => {
         return (
           <m.li
-            key={project.id}
+            key={project._id}
             className={`${styles.cardWrapper} ${
-              project.important && styles.importantCard
+              project.main && styles.importantCard
             }`}
             variants={variants.projectCards}
             initial="initial"
@@ -35,28 +31,19 @@ function ProjectCards({ projects }: { projects: ProjectCard[] }) {
             tabIndex={-1}
           >
             <Link
-              href={project.href}
-              className={`${styles.card} ${
-                project.disabled && styles.disabled
-              }`}
+              href={project.link ?? "#"}
+              className={styles.card}
             >
-              <picture className={styles.cardImage}>
-                <source
-                  srcSet={`assets/images/${project.heroImg}.avif`}
-                  type="image/avif"
-                />
-                <source
-                  srcSet={`assets/images/${project.heroImg}.webp`}
-                  type="image/webp"
-                />
-                <img
-                  src={`assets/images/${project.heroImg}.png`}
-                  alt="A screenshot of the project."
-                />
-              </picture>
+              <img
+                src={urlFor(project.image).url()}
+                alt="A screenshot of the project."
+                className={styles.cardImage}
+              />
               <div className={styles.cardContent}>
                 <h3 className={styles.cardHeader}>{project.title}</h3>
-                {Parser(project.content)}
+                {project.content ? (
+                  <PortableText value={project.content} />
+                ) : null}
               </div>
             </Link>
           </m.li>

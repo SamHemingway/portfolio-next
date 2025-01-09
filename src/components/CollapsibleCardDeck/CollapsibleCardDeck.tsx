@@ -8,16 +8,11 @@ import {
 } from "@headlessui/react";
 import { m } from "framer-motion";
 import { AnimationContext } from "../../contexts/AnimationProvider";
-
-export interface CollapsibleCardDeckDataItem {
-  title: string;
-  content: React.ReactNode;
-  id: string;
-}
-
+import { SKILL_BOX_LIST_QUERYResult } from "@/sanity/types";
+import { PortableText } from "@portabletext/react";
 interface CollapsibleCardDeck {
   cardsOpen?: Number;
-  data: CollapsibleCardDeckDataItem[];
+  data: SKILL_BOX_LIST_QUERYResult;
   doubleColumn?: Boolean;
 }
 
@@ -53,7 +48,7 @@ function CollapsibleCardDeck({
 
   return (
     <ul className={`${styles.deck} ${doubleColumn && styles.deckDouble}`}>
-      {data.map((item, index) => {
+      {data?.skillBoxes?.map((item, index) => {
         return (
           <Card
             as="li"
@@ -70,7 +65,7 @@ function CollapsibleCardDeck({
                     whileFocus="hover"
                     whileHover="hover"
                     animate="start"
-                    className={`${styles.cardTitleBG} ${styles[item.id]}`}
+                    className={`${styles.cardTitleBG} ${styles[item.image || ""]}`}
                     tabIndex={-1}
                   >
                     <CardButton className={styles.cardTitle}>
@@ -101,7 +96,9 @@ function CollapsibleCardDeck({
                         initial="start"
                         animate="end"
                       >
-                        {item.content}
+                        {item.content ? (
+                          <PortableText value={item.content} />
+                        ) : null}
                       </m.div>
                     </m.div>
                   </CardPanel>

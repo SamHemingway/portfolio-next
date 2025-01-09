@@ -9,6 +9,7 @@ import { Quicksand, Rubik } from "next/font/google";
 import { LazyMotion, domAnimation } from "framer-motion";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import { SanityLive } from "@/sanity/lib/live";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -41,10 +42,7 @@ export default function RootLayout({
       className={`${quicksand.variable} ${rubik.variable}`}
     >
       <body>
-        <LazyMotion
-          features={domAnimation}
-          strict
-        >
+        <LazyMotion features={domAnimation}>
           <AnimationProvider>
             <Header />
             <main>{children}</main>
@@ -54,6 +52,7 @@ export default function RootLayout({
         </LazyMotion>
         <SpeedInsights />
         <Analytics />
+        <SanityLive />
       </body>
     </html>
   );

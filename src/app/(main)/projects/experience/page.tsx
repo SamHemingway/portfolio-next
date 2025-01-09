@@ -3,19 +3,23 @@ import Hero from "@/components/Hero";
 import styles from "../projects.module.css";
 import Pills from "@/components/Pills";
 import Resume from "@/components/Resume/";
+import { sanityFetch } from "@/sanity/lib/live";
+import { SOFT_SKILLS_QUERY, HARD_SKILLS_QUERY } from "@/sanity/lib/queries";
 
-export default function SalesExperience() {
+export default async function SalesExperience() {
+  const hardSkills = await sanityFetch({ query: HARD_SKILLS_QUERY });
+  const softSkills = await sanityFetch({ query: SOFT_SKILLS_QUERY });
   return (
     <Hero title="sales experience">
       <div className={styles.innerWrapper}>
         <div className={styles.pillsSection}>
           <div className={styles.pillWrapper}>
             <h2 className={styles.pillHeader}>Soft Skills</h2>
-            <Pills content={softSkills} />
+            <Pills content={softSkills?.data} />
           </div>
           <div className={styles.pillWrapper}>
             <h2 className={styles.pillHeader}>Hard Skills</h2>
-            <Pills content={hardSkills} />
+            <Pills content={hardSkills?.data} />
           </div>
         </div>
         <Resume data={experience} />
@@ -23,27 +27,6 @@ export default function SalesExperience() {
     </Hero>
   );
 }
-
-const hardSkills = [
-  "Salesforce",
-  "HubSpot (Admin)",
-  "Outreach",
-  "Apollo",
-  "Jira",
-  "Zapier",
-  "Gong",
-  "JavaScript",
-  "React",
-  "REST APIs",
-];
-const softSkills = [
-  "Deep discovery",
-  "Technical demos",
-  "Relationship building",
-  "Custom demo instances",
-  "Cross-team collaboration",
-  "Onboarding & coaching",
-];
 
 const experience = [
   {

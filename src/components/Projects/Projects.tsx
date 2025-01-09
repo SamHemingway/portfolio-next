@@ -2,45 +2,13 @@ import React from "react";
 import ProjectCards from "../ProjectCards";
 import styles from "./Projects.module.css";
 import SlideIntoView from "../SlideIntoView";
+import { EXPERIENCE_BLOCK_QUERYResult } from "@/sanity/types";
 
-function Projects() {
-  const projectData = [
-    {
-      title: "Dictionary",
-      content: `<p>A small dictionary app I built whilst teaching myself to code.</p>
-        <p>The focus was on sweating the details from a UI perspective, building something fun and delightful for the user.</p>
-      `,
-      id: "dictionary",
-      heroImg: "dictionary",
-      href: "/projects/dictionary",
-      disabled: false,
-    },
-    {
-      title: "Sales Experience",
-      content: `<p>In a career spanning 5 years, I've:</p>
-        <ul>
-          <li>Regularly overachieved quota.</li>
-          <li>Built technical demos for Fortune 100 companies.</li>
-          <li>Implemented software and built processes from scratch.</li>
-        </ul>
-        <p>Here's my full resume in web format.</p>
-        `,
-      id: "project-b",
-      heroImg: "companyLogos",
-      href: "/projects/experience",
-      important: true,
-      disabled: false,
-    },
-    {
-      title: "Immortal Tracker",
-      content: `<p>My favourite video game has 95 unique campaigns to complete.</p><p>But there's no way to track your progress and — whilst a spreadsheet does the job — I felt the community deserved better.</p>`,
-      id: "immortal-tracker",
-      heroImg: "immortalTracker",
-      href: "/projects/immortal-tracker",
-      disabled: false,
-    },
-  ];
-
+function Projects({
+  experienceBlocks,
+}: {
+  experienceBlocks: EXPERIENCE_BLOCK_QUERYResult;
+}) {
   return (
     <SlideIntoView id="projects">
       <h2 className={`wrapper ${styles.heading}`}>experience & projects</h2>
@@ -50,7 +18,7 @@ function Projects() {
       >
         <div className={`wrapper`}>
           <article>
-            <ProjectCards projects={projectData} />
+            <ProjectCards projects={experienceBlocks} />
           </article>
         </div>
       </div>

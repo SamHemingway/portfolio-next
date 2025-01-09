@@ -1,10 +1,6 @@
 import React from "react";
 import styles from "./ImpactCards.module.css";
-
-export interface ImpactCard {
-  title: string;
-  content: string;
-}
+import type { ImpactCard } from "@/sanity/types";
 
 interface ImpactCards {
   content: ImpactCard[];
