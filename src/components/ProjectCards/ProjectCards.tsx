@@ -7,6 +7,7 @@ import Link from "next/link";
 import { EXPERIENCE_BLOCK_QUERYResult } from "@/sanity/types";
 import { PortableText } from "@portabletext/react";
 import { urlFor } from "@/sanity/lib/utils";
+import Image from "next/image";
 function ProjectCards({
   projects,
 }: {
@@ -34,10 +35,17 @@ function ProjectCards({
               className={styles.card}
             >
               {project.image ? (
-                <img
-                  src={urlFor(project.image).url()}
+                <Image
+                  src={urlFor(project.image)
+                    .width(1000)
+                    .height(400)
+                    .quality(80)
+                    .auto("format")
+                    .url()}
                   alt="A screenshot of the project."
                   className={styles.cardImage}
+                  width={1000}
+                  height={400}
                 />
               ) : null}
               <div className={styles.cardContent}>

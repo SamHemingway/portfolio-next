@@ -1,11 +1,15 @@
-import withBundleAnalyzer from "@next/bundle-analyzer";
-
 /** @type {import('next').NextConfig} */
-const nextConfig = withBundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
-  experimental: {
-    turbo: true,
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        port: "",
+        pathname: "/images/**",
+      },
+    ],
   },
-})({});
+};
 
 export default nextConfig;
