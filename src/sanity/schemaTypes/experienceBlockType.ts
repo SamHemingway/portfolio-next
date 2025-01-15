@@ -23,6 +23,9 @@ export const experienceBlockType = defineType({
       name: "image",
       title: "Image",
       type: "image",
+      options: {
+        hotspot: true,
+      },
     }),
     defineField({
       name: "link",
