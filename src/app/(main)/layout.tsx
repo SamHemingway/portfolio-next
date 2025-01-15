@@ -10,6 +10,9 @@ import { LazyMotion, domAnimation } from "framer-motion";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { SanityLive } from "@/sanity/lib/live";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity";
+import { DisableDraftMode } from "@/components/DisableDraftMode";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -31,7 +34,7 @@ export const metadata: Metadata = {
     "Sam is a SaaS sales professional based in Montreal, Canada. His experience ranges from being a top performing sales rep at a unicorn start-up all the way to consulting on GTM strategy for seed-stage companies.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -53,6 +56,12 @@ export default function RootLayout({
         <SpeedInsights />
         <Analytics />
         <SanityLive />
+        {(await draftMode()).isEnabled && (
+          <>
+            <DisableDraftMode />
+            <VisualEditing />
+          </>
+        )}
       </body>
     </html>
   );
