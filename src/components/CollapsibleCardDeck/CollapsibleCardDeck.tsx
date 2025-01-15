@@ -9,7 +9,7 @@ import {
 import { m } from "framer-motion";
 import { AnimationContext } from "../../contexts/AnimationProvider";
 import { SKILL_BOX_LIST_QUERYResult } from "@/sanity/types";
-import { PortableText } from "@portabletext/react";
+import { PortableText } from "next-sanity";
 interface CollapsibleCardDeck {
   cardsOpen?: Number;
   data: SKILL_BOX_LIST_QUERYResult;

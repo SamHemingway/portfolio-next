@@ -5,9 +5,11 @@ import { m } from "framer-motion";
 import { AnimationContext } from "../../contexts/AnimationProvider";
 import Link from "next/link";
 import { EXPERIENCE_BLOCK_QUERYResult } from "@/sanity/types";
-import { PortableText } from "@portabletext/react";
+import { PortableText } from "next-sanity";
 import { urlFor } from "@/sanity/lib/utils";
 import Image from "next/image";
+import { components } from "@/sanity/portableTextComponents";
+
 function ProjectCards({
   projects,
 }: {
@@ -51,7 +53,10 @@ function ProjectCards({
               <div className={styles.cardContent}>
                 <h3 className={styles.cardHeader}>{project.title}</h3>
                 {project.content ? (
-                  <PortableText value={project.content} />
+                  <PortableText
+                    value={project.content}
+                    components={components}
+                  />
                 ) : null}
               </div>
             </Link>
