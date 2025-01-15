@@ -75,10 +75,8 @@
 
 .cardImage {
   grid-column: 1 / -1;
-}
-
-.cardImage > * {
   object-fit: cover;
+  max-block-size: 9.375rem;
 }
 
 .cardContent {
