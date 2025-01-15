@@ -44,8 +44,8 @@ function ProjectCards({
                     .url()}
                   alt="A screenshot of the project."
                   className={styles.cardImage}
-                  width={500}
-                  height={200}
+                  width={600}
+                  height={233}
                 />
               ) : null}
               <div className={styles.cardContent}>
