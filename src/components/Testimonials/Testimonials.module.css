@@ -30,6 +30,10 @@
   margin-block: 0;
 }
 
+.cardWrapper:hover .name {
+  text-decoration: underline;
+}
+
 .cardImage {
   max-inline-size: 7.5rem;
   max-block-size: 7.5rem;

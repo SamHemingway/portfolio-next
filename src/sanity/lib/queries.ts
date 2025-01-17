@@ -25,6 +25,18 @@ export const SKILL_BOX_LIST_QUERY = defineQuery(`*[_type == "skillBoxList"][0]{
   }
 }`);
 
+export const TESTIMONIAL_LIST_QUERY =
+  defineQuery(`*[_type == "testimonialList"][0]{
+  testimonials[]->{
+    name,
+    title,
+    company,
+    content,
+    headshot,
+    link
+  }
+}`);
+
 export const EXPERIENCE_BLOCK_QUERY = defineQuery(
   `*[_type == "experienceBlock"]`
 );

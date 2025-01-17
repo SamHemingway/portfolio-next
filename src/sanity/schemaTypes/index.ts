@@ -8,6 +8,8 @@ import { skillBoxType } from "./skillBoxType";
 import { skillPillListType } from "./skillPillListType";
 import { skillBoxListType } from "./skillBoxListType";
 import { experienceBlockType } from "./experienceBlockType";
+import { testimonialType } from "./testimonialType";
+import { testimonialListType } from "./testimonialListType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -19,5 +21,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     skillPillListType,
     skillBoxListType,
     experienceBlockType,
+    testimonialType,
+    testimonialListType,
   ],
 };

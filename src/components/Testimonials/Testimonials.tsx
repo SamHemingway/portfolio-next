@@ -1,55 +1,48 @@
+"use client";
+
 import React from "react";
 import styles from "./Testimonials.module.css";
 import { Masonry } from "react-plock";
-import { m } from "framer-motion";
-import { AnimationContext } from "../../contexts/AnimationProvider";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
+import { PortableText } from "next-sanity";
+import { urlFor } from "@/sanity/lib/utils";
+import { components } from "@/sanity/portableTextComponents";
+import { TESTIMONIAL_LIST_QUERYResult } from "@/sanity/types";
 
-export interface TestimonialCard {
-  name: string;
-  title: string;
-  company: string;
-  content: React.ReactNode;
-  profilePic: StaticImageData;
-  id: string;
-  important?: boolean;
-}
-
-function Testimonials({ data }: { data: TestimonialCard[] }) {
-  const { variants } = React.useContext(AnimationContext);
-
+export default function Testimonials({
+  data,
+}: {
+  data: TESTIMONIAL_LIST_QUERYResult;
+}) {
+  console.log("Testimonial data:", data);
   return (
     <Masonry
-      items={data}
+      items={data?.testimonials ?? []}
       config={{
         columns: [1, 2, 3],
         gap: [-48, 48, 48],
         media: [800, 1280, 1440],
       }}
-      style={undefined}
       className={styles.deck}
       render={(item, idx) => (
         <Link
-          href="https://www.linkedin.com/in/sam-hemingway/details/recommendations/?detailScreenTabIndex=0"
+          href={item.link ?? "#"}
           style={{ textDecoration: "none" }}
+          key={idx}
         >
-          <m.li
-            key={idx}
-            className={styles.cardWrapper}
-            variants={variants.testimonialCards}
-            initial="initial"
-            whileHover="hover"
-            whileTap="tap"
-            tabIndex={-1}
-          >
+          <li className={styles.cardWrapper}>
             <div className={styles.cardContent}>
               <div className={styles.cardTopSection}>
-                <Image
-                  className={styles.cardImage}
-                  src={item.profilePic}
-                  alt=""
-                />
+                {item.headshot ? (
+                  <Image
+                    className={styles.cardImage}
+                    src={urlFor(item.headshot).url()}
+                    alt=""
+                    width={100}
+                    height={100}
+                  />
+                ) : null}
                 <div>
                   <h3 className={styles.name}>{item.name}</h3>
                   <h4 className={styles.title}>
@@ -57,13 +50,16 @@ function Testimonials({ data }: { data: TestimonialCard[] }) {
                   </h4>
                 </div>
               </div>
-              {item.content}
+              {item.content ? (
+                <PortableText
+                  value={item.content}
+                  components={components}
+                />
+              ) : null}
             </div>
-          </m.li>
+          </li>
         </Link>
       )}
     />
   );
 }
-
-export default Testimonials;

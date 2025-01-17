@@ -10,5 +10,6 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem("impactCard").title("Impact Card"),
       S.documentTypeListItem("skillBoxList").title("Skill Box List"),
       S.documentTypeListItem("experienceBlock").title("Experience Block"),
+      S.documentTypeListItem("testimonialList").title("Testimonial List"),
       S.divider(),
     ]);

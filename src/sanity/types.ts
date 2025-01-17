@@ -74,6 +74,74 @@ export type Slug = {
   source?: string;
 };
 
+export type TestimonialList = {
+  _id: string;
+  _type: "testimonialList";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  testimonials?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "testimonial";
+  }>;
+};
+
+export type Testimonial = {
+  _id: string;
+  _type: "testimonial";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  company?: string;
+  title?: string;
+  content?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+  headshot?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  link?: string;
+};
+
 export type ExperienceBlock = {
   _id: string;
   _type: "experienceBlock";
@@ -312,7 +380,7 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Slug | ExperienceBlock | SkillBoxList | SkillPillList | SkillBox | SkillPill | ImpactCard | Header | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Slug | TestimonialList | Testimonial | ExperienceBlock | SkillBoxList | SkillPillList | SkillBox | SkillPill | ImpactCard | Header | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: HEADER_QUERY
@@ -427,6 +495,57 @@ export type SKILL_BOX_LIST_QUERYResult = {
     image: string | null;
   }> | null;
 } | null;
+// Variable: TESTIMONIAL_LIST_QUERY
+// Query: *[_type == "testimonialList"][0]{  testimonials[]->{    name,    title,    company,    content,    headshot,    link  }}
+export type TESTIMONIAL_LIST_QUERYResult = {
+  testimonials: Array<{
+    name: string | null;
+    title: string | null;
+    company: string | null;
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    } | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }> | null;
+    headshot: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    } | null;
+    link: string | null;
+  }> | null;
+} | null;
 // Variable: EXPERIENCE_BLOCK_QUERY
 // Query: *[_type == "experienceBlock"]
 export type EXPERIENCE_BLOCK_QUERYResult = Array<{
@@ -497,6 +616,7 @@ declare module "@sanity/client" {
     "*[_type == \"skillBox\"]": SKILL_BOX_QUERYResult;
     "*[_type == \"skillPillList\"][0]{\n  skillPills[]->{\n    skill\n  }\n}": SKILL_PILL_LIST_QUERYResult;
     "*[_type == \"skillBoxList\"][0]{\n  skillBoxes[]->{\n    title,\n    content,\n    image\n  }\n}": SKILL_BOX_LIST_QUERYResult;
+    "*[_type == \"testimonialList\"][0]{\n  testimonials[]->{\n    name,\n    title,\n    company,\n    content,\n    headshot,\n    link\n  }\n}": TESTIMONIAL_LIST_QUERYResult;
     "*[_type == \"experienceBlock\"]": EXPERIENCE_BLOCK_QUERYResult;
     "*[_type == \"skillPillList\" && skillPills[]->skill match \"*deep discovery*\"][0]{\n  skillPills[]->{\n    skill\n  }\n}": SOFT_SKILLS_QUERYResult;
     "*[_type == \"skillPillList\" && skillPills[]->skill match \"*react*\"][0]{\n  skillPills[]->{\n    skill\n  }\n}": HARD_SKILLS_QUERYResult;
