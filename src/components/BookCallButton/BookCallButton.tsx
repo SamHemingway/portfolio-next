@@ -34,7 +34,6 @@ function BookCallButton({
       variant={variant}
       size={variant === "cta" ? "large" : "small"}
       stretch={stretch}
-      tabIndex={-1}
       data-cal-namespace="meet"
       data-cal-link="samhem/meet"
       data-cal-config='{"layout":"month_view"}'

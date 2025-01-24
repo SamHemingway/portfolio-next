@@ -30,7 +30,17 @@
   margin-block: 0;
 }
 
-.cardWrapper:hover .name {
+.cardWrapper:focus-within {
+  outline: 5px solid white;
+  background: var(--clr-secondary-300);
+}
+
+.cardWrapper:hover {
+  background: var(--clr-secondary-300);
+}
+
+.cardWrapper:hover .name,
+.cardWrapper:focus-within .name {
   text-decoration: underline;
 }
 

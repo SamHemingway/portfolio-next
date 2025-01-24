@@ -9,9 +9,6 @@ async function TestimonialSection() {
   const testimonialArray = await sanityFetch({
     query: TESTIMONIAL_LIST_QUERY,
   });
-  console.log("Raw testimonial response:", testimonialArray);
-  console.log("Testimonial data:", testimonialArray?.data);
-  console.log("Testimonials array:", testimonialArray?.data?.testimonials);
 
   return (
     <SlideIntoView id="testimonials">

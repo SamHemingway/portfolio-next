@@ -15,7 +15,6 @@ export default function Testimonials({
 }: {
   data: TESTIMONIAL_LIST_QUERYResult;
 }) {
-  console.log("Testimonial data:", data);
   return (
     <Masonry
       items={data?.testimonials ?? []}
@@ -25,13 +24,14 @@ export default function Testimonials({
         media: [800, 1280, 1440],
       }}
       className={styles.deck}
+      as={"ul"}
       render={(item, idx) => (
-        <Link
-          href={item.link ?? "#"}
-          style={{ textDecoration: "none" }}
-          key={idx}
-        >
-          <li className={styles.cardWrapper}>
+        <li className={styles.cardWrapper}>
+          <Link
+            href={item.link ?? "#"}
+            style={{ textDecoration: "none" }}
+            key={idx}
+          >
             <div className={styles.cardContent}>
               <div className={styles.cardTopSection}>
                 {item.headshot ? (
@@ -57,8 +57,8 @@ export default function Testimonials({
                 />
               ) : null}
             </div>
-          </li>
-        </Link>
+          </Link>
+        </li>
       )}
     />
   );
