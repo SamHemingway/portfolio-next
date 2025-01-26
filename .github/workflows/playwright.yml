@@ -1,14 +1,15 @@
 name: Playwright Tests
-on:
-  deployment_status
+on: [pull_request, deployment_status]
 
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     if: |
-      github.event.deployment_status.state == 'success' &&
-      github.event.deployment.environment == 'Preview'
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'deployment_status' && 
+       github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'Preview')
     steps:
     - uses: actions/checkout@v4
       with:
@@ -22,7 +23,14 @@ jobs:
       run: pnpm exec playwright install --with-deps
     - name: Run Playwright tests
       run: |
-        DEPLOYMENT_URL=$(echo "${{ github.event.deployment_status.target_url }}" | sed 's#https://##')
+        if [ "${{ github.event_name }}" = "deployment_status" ]; then
+          DEPLOYMENT_URL=$(echo "${{ github.event.deployment_status.target_url }}" | sed 's#https://##')
+          export VERCEL_URL="$DEPLOYMENT_URL"
+        else
+          echo "Running against localhost as this is a PR trigger"
+          pnpm run dev & sleep 10
+          export VERCEL_URL="localhost:3000"
+        fi
         pnpm exec playwright test
       env:
         VERCEL_URL: ${{ github.event.deployment_status.target_url }}
