@@ -1,6 +1,10 @@
 name: Playwright Tests
 on: deployment_status
 
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
 # Cancel in-progress runs for PRs
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -27,41 +31,20 @@ jobs:
     needs: debug
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    # Simplified conditions based on what we actually receive
     if: |
       github.event.action == 'created' &&
       contains(github.event.deployment.environment, 'Preview')
     steps:
-    - name: Debug Test Job Conditions
-      run: |
-        echo "Checking test job conditions:"
-        echo "Action is created? ${{ github.event.action == 'created' }}"
-        echo "Environment contains Preview? ${{ contains(github.event.deployment.environment, 'Preview') }}"
-        echo "Target URL: ${{ github.event.deployment_status.target_url }}"
-    
-    - name: Wait for deployment to be ready
-      run: |
-        echo "Waiting for deployment to be ready at ${{ github.event.deployment_status.target_url }}"
-        timeout=300
-        elapsed=0
-        while ! curl -s --head "${{ github.event.deployment_status.target_url }}" \
-          -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
-          | grep -E "HTTP/[0-9\.]+ 200" > /dev/null; do
-          if [ $elapsed -ge $timeout ]; then
-            echo "Timeout waiting for deployment to be ready"
-            curl -v --head "${{ github.event.deployment_status.target_url }}" \
-              -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}"
-            exit 1
-          fi
-          sleep 5
-          elapsed=$((elapsed + 5))
-          echo "Still waiting for deployment... ($elapsed seconds elapsed)"
-        done
-        echo "Deployment is ready!"
-        
     - uses: actions/checkout@v4
       with:
         ref: ${{ github.event.deployment.ref }}
+    
+    - name: Install Vercel CLI
+      run: npm install --global vercel@latest
+
+    - name: Pull Vercel Environment Information
+      run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+    
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
@@ -73,14 +56,12 @@ jobs:
       run: |
         echo "Testing against deployment URL: ${{ github.event.deployment_status.target_url }}"
         echo "Using ref: ${{ github.event.deployment.ref }}"
-        # Add retries and increase timeout
-        PLAYWRIGHT_TEST_TIMEOUT=120000 PLAYWRIGHT_BROWSERS_PATH=/ms-playwright pnpm exec playwright test --retries=2 --reporter=list
+        PLAYWRIGHT_TEST_TIMEOUT=120000 pnpm exec playwright test --retries=2 --reporter=list
       env:
         VERCEL_URL: ${{ github.event.deployment_status.target_url }}
         NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
         NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
         SANITY_API_READ_TOKEN: ${{ secrets.SANITY_API_READ_TOKEN }}
-        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         CI: true
         DEBUG: pw:api*
     - uses: actions/upload-artifact@v4
