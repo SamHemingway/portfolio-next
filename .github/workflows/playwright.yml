@@ -18,6 +18,8 @@ jobs:
           echo "Deployment Status: ${{ github.event.deployment_status.state }}"
           echo "Target URL: ${{ github.event.deployment_status.target_url }}"
           echo "Environment: ${{ github.event.deployment.environment }}"
+          echo "Ref: ${{ github.event.deployment.ref }}"
+          echo "SHA: ${{ github.event.deployment.sha }}"
           echo "Full Event Context:"
           echo "$EVENT_CONTEXT"
 
@@ -26,9 +28,19 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     if: |
+      github.event_name == 'deployment_status' &&
       github.event.deployment_status.state == 'success' &&
-      contains(github.event.deployment_status.target_url, 'vercel.app')
+      contains(github.event.deployment_status.target_url, 'vercel.app') &&
+      contains(github.event.deployment.environment, 'Preview')
     steps:
+    - name: Debug Test Job Conditions
+      run: |
+        echo "Checking test job conditions:"
+        echo "Event name matches? ${{ github.event_name == 'deployment_status' }}"
+        echo "Status is success? ${{ github.event.deployment_status.state == 'success' }}"
+        echo "URL contains vercel.app? ${{ contains(github.event.deployment_status.target_url, 'vercel.app') }}"
+        echo "Environment contains Preview? ${{ contains(github.event.deployment.environment, 'Preview') }}"
+    
     - uses: actions/checkout@v4
       with:
         ref: ${{ github.event.deployment.ref }}
@@ -42,6 +54,7 @@ jobs:
     - name: Run Playwright tests
       run: |
         echo "Testing against deployment URL: ${{ github.event.deployment_status.target_url }}"
+        echo "Using ref: ${{ github.event.deployment.ref }}"
         pnpm exec playwright test
       env:
         VERCEL_URL: ${{ github.event.deployment_status.target_url }}
