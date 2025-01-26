@@ -5,7 +5,7 @@ test("the modal should close when pressing the ESC key", async ({
 }: {
   page: Page;
 }) => {
-  await page.goto("http://localhost:3000/");
+  await page.goto("/");
   await page.waitForTimeout(4000);
   await page
     .getByRole("navigation")
