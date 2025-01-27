@@ -9,7 +9,8 @@
     "lint": "next lint",
     "predev": "pnpm run typegen",
     "prebuild": "pnpm run typegen",
-    "typegen": "sanity schema extract --path=./src/sanity/extract.json && sanity typegen generate"
+    "typegen": "sanity schema extract --path=./src/sanity/extract.json && sanity typegen generate",
+    "test:preview": "PLAYWRIGHT_BASE_URL=https://portfolio-next-git-main-samhemingways-projects.vercel.app pnpm exec playwright test"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.2",
@@ -36,7 +37,6 @@
     "use-session-storage-state": "^19.0.1"
   },
   "devDependencies": {
-
     "@axe-core/watcher": "^3.18.0",
     "@playwright/test": "^1.50.0",
     "@types/node": "^22.10.10",
