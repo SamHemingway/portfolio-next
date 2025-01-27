@@ -16,15 +16,13 @@ test("the modal should close when pressing the ESC key", async ({
     console.log("Starting test...");
     currentStep = "navigation";
 
-    // Set the bypass header for preview deployments
-    if (process.env.CI && process.env.VERCEL_TOKEN) {
-      await context.setExtraHTTPHeaders({
-        "x-vercel-protection-bypass": process.env.VERCEL_TOKEN,
-      });
-    }
+    // Use hardcoded URL for CI, localhost for local development
+    const url = process.env.CI
+      ? "https://samsales.pro"
+      : "http://localhost:3000";
 
-    // Navigate to the page
-    await page.goto("/");
+    console.log("Navigating to:", url);
+    await page.goto(url);
     await page.waitForLoadState("domcontentloaded");
     console.log("Page loaded");
 
