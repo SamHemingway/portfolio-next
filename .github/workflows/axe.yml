@@ -10,24 +10,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      # Temporarily rename directories with parentheses
-      - name: Rename directories for linting
-        run: |
-          find src/app -type d -name "(*)" -print0 | while IFS= read -r -d '' dir; do
-            new_dir="${dir//[()]/}"
-            mv "$dir" "$new_dir"
-          done
-
-      # Run axe-linter
       - uses: dequelabs/axe-linter-action@v1
         with:
           api_key: ${{ secrets.AXE_LINTER_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      # Restore original directory names
-      - name: Restore directory names
-        if: always()
-        run: |
-          find src/app -type d -maxdepth 1 -name "main" -exec mv {} "src/app/(main)" \;
-          find src/app -type d -maxdepth 1 -name "sanity" -exec mv {} "src/app/(sanity)" \;
