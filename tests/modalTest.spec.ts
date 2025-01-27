@@ -17,6 +17,9 @@ test("the modal should close when pressing the ESC key", async ({
     // Simple navigation without waiting for network idle
     console.log('Navigating to page...');
     await page.goto("/");
+    
+    // Wait for page to be ready
+    await page.waitForLoadState('domcontentloaded');
     console.log('Page loaded');
     
     // Look for the button within the navigation
