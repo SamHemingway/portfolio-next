@@ -64,9 +64,16 @@ jobs:
       run: pnpm exec playwright install --with-deps
     - name: Run Playwright tests
       run: |
-        echo "Testing against deployment URL: ${{ github.event.deployment_status.target_url }}"
+        # Extract the hostname from the URL
+        DEPLOY_URL="${{ github.event.deployment_status.target_url }}"
+        echo "Testing against deployment URL: $DEPLOY_URL"
         echo "Using ref: ${{ github.event.deployment.ref }}"
-        PLAYWRIGHT_TEST_TIMEOUT=120000 pnpm exec playwright test --retries=2 --reporter=list
+        
+        # Run tests with explicit base URL
+        PLAYWRIGHT_TEST_TIMEOUT=120000 pnpm exec playwright test \
+          --retries=2 \
+          --reporter=list \
+          --base-url="$DEPLOY_URL"
       env:
         VERCEL_URL: ${{ github.event.deployment_status.target_url }}
         NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
