@@ -14,21 +14,27 @@ test("the modal should close when pressing the ESC key", async ({
     console.log('Starting test...');
     currentStep = 'navigation';
     
-    // Navigate and wait for network to be idle with longer timeout
+    // Simple navigation without waiting for network idle
     console.log('Navigating to page...');
-    await page.goto("/", { 
-      waitUntil: 'networkidle',
-      timeout: 45000 // 45 seconds for initial load
-    });
+    await page.goto("/");
     console.log('Page loaded');
     
     // Look for the button within the navigation
     currentStep = 'button-search';
-    console.log('Looking for Let\'s talk button in navigation...');
-    const talkButton = page.locator('nav button:text-is("Let\'s talk")').first();
+    console.log('Looking for Let\'s talk button...');
     
-    // Wait for button to be visible and clickable with longer timeouts
-    await expect(talkButton).toBeVisible({ timeout: 45000 });
+    // Log all buttons for debugging
+    const allButtons = await page.locator('button').all();
+    console.log('Found buttons:', await Promise.all(allButtons.map(async button => {
+      const text = await button.textContent();
+      return `"${text}" (visible: ${await button.isVisible()})`;
+    })));
+    
+    // Try to find the button with a more general selector first
+    const talkButton = page.getByRole('button', { name: /let's talk/i }).first();
+    
+    // Wait for button to be visible and clickable
+    await expect(talkButton).toBeVisible({ timeout: 10000 });
     await expect(talkButton).toBeEnabled();
     
     currentStep = 'button-click';
@@ -41,13 +47,13 @@ test("the modal should close when pressing the ESC key", async ({
     console.log('Waiting for iframe...');
     await page.waitForSelector('iframe', { 
       state: 'visible', 
-      timeout: 45000 
+      timeout: 10000 
     });
     const iframe = page.frameLocator("iframe");
     console.log('iframe found');
 
     // Add a small delay after iframe is found to ensure it's fully loaded
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(2000);
 
     // Press escape in the iframe
     currentStep = 'escape-press';
@@ -58,7 +64,7 @@ test("the modal should close when pressing the ESC key", async ({
     // Verify the modal is closed
     currentStep = 'modal-check';
     console.log('Verifying modal is closed...');
-    await expect(page.locator("cal-modal-box")).not.toBeVisible({ timeout: 15000 });
+    await expect(page.locator("cal-modal-box")).not.toBeVisible({ timeout: 5000 });
     console.log('Test complete');
 
   } catch (error) {
@@ -66,7 +72,7 @@ test("the modal should close when pressing the ESC key", async ({
     console.error('Error details:', error);
     
     try {
-      // Try to get current state
+      // Log the current page content
       const html = await page.content();
       console.log(`Page HTML during failed step (${currentStep}):`, html);
     } catch (contentError) {
