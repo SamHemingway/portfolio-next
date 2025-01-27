@@ -14,8 +14,10 @@ jobs:
       # Temporarily rename directories with parentheses
       - name: Rename directories for linting
         run: |
-          mv "src/app/(main)" "src/app/main_temp"
-          mv "src/app/(sanity)" "src/app/sanity_temp"
+          find src/app -type d -name "(*)" -print0 | while IFS= read -r -d '' dir; do
+            new_dir="${dir//[()]/}"
+            mv "$dir" "$new_dir"
+          done
 
       # Run axe-linter
       - uses: dequelabs/axe-linter-action@v1
@@ -25,7 +27,7 @@ jobs:
 
       # Restore original directory names
       - name: Restore directory names
-        if: always() # Run even if previous steps fail
+        if: always()
         run: |
-          mv "src/app/main_temp" "src/app/(main)"
-          mv "src/app/sanity_temp" "src/app/(sanity)"
+          find src/app -type d -maxdepth 1 -name "main" -exec mv {} "src/app/(main)" \;
+          find src/app -type d -maxdepth 1 -name "sanity" -exec mv {} "src/app/(sanity)" \;
