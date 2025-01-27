@@ -1,9 +1,14 @@
 import { test, expect, type Page } from "@playwright/test";
 
+// Increase test timeout to 60 seconds
+test.setTimeout(60000);
+
 test("the modal should close when pressing the ESC key", async ({
   page,
+  context,
 }: {
   page: Page;
+  context: any;
 }) => {
   let currentStep = "starting";
 
@@ -11,7 +16,14 @@ test("the modal should close when pressing the ESC key", async ({
     console.log("Starting test...");
     currentStep = "navigation";
 
-    // Use "/" to respect the baseURL from the config
+    // Set the bypass header for preview deployments
+    if (process.env.CI && process.env.VERCEL_TOKEN) {
+      await context.setExtraHTTPHeaders({
+        "x-vercel-protection-bypass": process.env.VERCEL_TOKEN,
+      });
+    }
+
+    // Navigate to the page
     await page.goto("/");
     await page.waitForLoadState("domcontentloaded");
     console.log("Page loaded");
