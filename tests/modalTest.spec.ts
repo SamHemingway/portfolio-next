@@ -14,8 +14,7 @@ test("the modal should close when pressing the ESC key", async ({
     console.log('Starting test...');
     currentStep = 'navigation';
     
-    // Navigate and wait for initial load
-    console.log('Navigating to page...');
+    // Use "/" to respect the baseURL from the config
     await page.goto("/");
     await page.waitForLoadState('domcontentloaded');
     console.log('Page loaded');
@@ -28,19 +27,10 @@ test("the modal should close when pressing the ESC key", async ({
     currentStep = 'button-search';
     console.log('Looking for Let\'s talk button...');
     
-    // Log all buttons for debugging
-    const allButtons = await page.locator('button, a').all();
-    console.log('Found clickable elements:', await Promise.all(allButtons.map(async button => {
-      const text = await button.textContent();
-      const isVisible = await button.isVisible();
-      const role = await button.getAttribute('role');
-      return `"${text}" (visible: ${isVisible}, role: ${role})`;
-    })));
-    
     // Try multiple selectors to find the button
     const talkButton = page.locator('a, button').filter({ hasText: /let's talk/i }).first();
     
-    // Wait for button to be visible and clickable with increased timeout
+    // Wait for button to be visible and clickable
     console.log('Waiting for button to be visible...');
     await expect(talkButton).toBeVisible({ timeout: 30000 });
     await expect(talkButton).toBeEnabled();
@@ -78,20 +68,6 @@ test("the modal should close when pressing the ESC key", async ({
   } catch (error) {
     console.error(`Test failed during step: ${currentStep}`);
     console.error('Error details:', error);
-    
-    try {
-      // Log the current page content and URL
-      const html = await page.content();
-      const url = page.url();
-      console.log(`Current URL: ${url}`);
-      console.log(`Page HTML during failed step (${currentStep}):`, html);
-      
-      // Take a screenshot
-      await page.screenshot({ path: `test-failure-${currentStep}.png`, fullPage: true });
-    } catch (contentError) {
-      console.error('Failed to get debug information:', contentError);
-    }
-    
     throw error;
   }
 });
