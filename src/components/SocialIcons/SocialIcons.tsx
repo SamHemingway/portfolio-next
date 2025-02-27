@@ -12,11 +12,6 @@ const data = [
     src: "/assets/icons/linked-in.svg",
     ariaLabel: "Go to Sam's LinkedIn page",
   },
-  {
-    link: "/assets/Sam Hemingway Solutions Engineer Resume.pdf",
-    src: "/assets/icons/download.svg",
-    ariaLabel: "Download Sam's resumé in PDF format",
-  },
 ];
 
 interface Socials {
